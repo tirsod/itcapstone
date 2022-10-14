@@ -1,0 +1,39 @@
+<!doctype html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <div class="sidenav">
+            <div class="login-main-text">
+               <h2>Application<br> Login Page</h2>
+               <p>Login or register from here to access.</p>
+            </div>
+         </div>
+         <div class="main">
+            <div class="col-md-6 col-sm-12">
+               <div class="login-form">
+                  <form action="https://localhost:7242/Login" id="login_form">
+                     <div class="alert alert-danger" role="alert" style="display:none;" id="login_alert">
+                        Could not authenticate the user: wrong password.
+                     </div>
+                     <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" class="form-control" id="username" placeholder="User Name">
+                     </div>
+                     <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                     </div>
+                     <button type="submit" class="btn btn-black" id="login_button">Login</button>
+                     <!--<button type="submit" class="btn btn-secondary">Register</button>-->
+                  </form>
+               </div>
+            </div>
+         </div>	
+    </body>
+</html>
