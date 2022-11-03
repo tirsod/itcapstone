@@ -73,6 +73,6 @@ body {
     background-color: #000 !important;
     color: #fff;
 }
-.navbar{
+.navbar navbar-expand-lg navbar-light bg-light{
     float: right;
 }
