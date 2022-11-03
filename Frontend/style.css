@@ -2,8 +2,11 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-
-
+.navbarSupportedContent{
+    background: #E3E6F3;
+    align-items: center;
+    justify-content: space-between;
+}
 .main-head{
     height: 150px;
     background: #FFF;
@@ -72,7 +75,4 @@ body {
 .btn-black{
     background-color: #000 !important;
     color: #fff;
-}
-.navbar navbar-expand-lg navbar-light bg-light{
-    float: right;
 }
