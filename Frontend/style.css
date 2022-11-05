@@ -1,21 +1,21 @@
 *{
-    font-family:"Lato", sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 h1{
     font-size: 50px;
     line-height: 64px;
-    color:#000
+    color: #000;
 }
 
 h2{
-    font-size: 46px;
+    font-size: 50px;
     line-height: 54px;
     color: #000;
 }
 
 h4{
-    font-size:20px;
+    font-size: 20px;
     color: #000;
 }
 
@@ -36,4 +36,46 @@ p{
 
 .section-m1{
     margin: 40px 0;
+}
+
+/* navbar styling*/
+.navbar {
+    position: relative;
+    background-color: #80bfff;
+    overflow: hidden;
+}
+
+.navbar img{
+   padding-top: 5px;
+   padding-left: 5px;
+}
+.navbar a{
+    float: left;
+    color: #404040; 
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover{
+    color: #000;
+}
+
+.navbar a.active{
+    color: #000;
+    background-color: #1a8cff;
+}
+
+.login {
+    float: right;
+    list-style: none;
+}
+
+.centered-nav{
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
