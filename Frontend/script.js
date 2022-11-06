@@ -1,6 +1,6 @@
 $(document).ready(function(){
     function getBaseUrl(endpoint){
-        return 'https://localhost:7242/'+endpoint;
+        return 'https://capstoneoutfitters.azurewebsites.net'+endpoint;
     }
     $('#login_form').submit(function(){
         $('#login_alert').hide();
