@@ -1,6 +1,6 @@
 $(document).ready(function(){
     function getBaseUrl(endpoint){
-        return 'capstoneoutfitters.azurewebsites.net'+endpoint;
+        return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
     }
     $('#login_form').submit(function(){
         $('#login_alert').hide();
