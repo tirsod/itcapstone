@@ -37,7 +37,9 @@ p{
     padding-top: 100px;
     text-align: center;
 }
-
+#home2{
+    text-align: center;
+}
 .section-p1{
     padding: 40px 80px;
 }
@@ -123,16 +125,20 @@ header{
   
   .open .mobile-menu {
     display: flex;
+    max-height: 230px;
+    max-width: 200px;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    background-color: #cce6ff;
   }
   
   .mobile-menu {
-    display: none;
+   display: none;
     position: absolute;
     top: 50px;
-    left: 0;
+    right: 0;
+    left: auto;
     height: calc(100vh - 50px);
     width: 100%;
   }
