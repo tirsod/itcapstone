@@ -9,20 +9,35 @@
         <script src="https://kit.fontawesome.com/8c5cbea69b.js" crossorigin="anonymous"></script>
         <script src="script.js"></script>
     </head>
-
-    <body>
-       <div class="navbar">
-        <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
-        <div class="login">
-            <a href="login.html" >Login/Create Account</a>
-            <a href="profile.html" class="active">Profile</a>
+    <body></body>
+        <header>
+         <div class="navbar">
+            <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
+         </div> 
+         <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html">Login/Create Account</a></li>
+                <li><a href="profile.html" class="active"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
+            </ul>
+         </nav>
+         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <ul class="mobile-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html">Login/Create Account</a></li>
+                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
+            </ul>
         </div>
-        <div class="centered-nav">
-            <a href="index.html" >Home</a>
-            <a href="about.html">About Us</a>
-            <a href="shop.html"> Shop</a>
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-        </div>
-       </div>
+       </header>
+       <script src="index.js"></script>
     </body>
 </html>
