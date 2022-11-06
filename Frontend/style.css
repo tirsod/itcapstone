@@ -33,6 +33,11 @@ p{
     margin: 15px, 0, 15px, 0;
 }
 
+#home{
+    padding-top: 100px;
+    text-align: center;
+}
+
 .section-p1{
     padding: 40px 80px;
 }
