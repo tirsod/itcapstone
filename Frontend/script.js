@@ -1,7 +1,6 @@
 $(document).ready(function(){
     function getBaseUrl(endpoint){
-        return 'https://localhost:7242/'+endpoint;
-        //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
+        return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
     }
     $('#login_form').submit(function(){
         $('#login_alert').hide();
@@ -58,3 +57,4 @@ function getCookie(name) {
 function eraseCookie(name) {   
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+
