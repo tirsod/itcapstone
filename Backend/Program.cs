@@ -9,8 +9,10 @@ namespace ItcapstoneBackend
 {
     class Program
     {
+
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -22,8 +24,8 @@ namespace ItcapstoneBackend
             builder.Services.AddSwaggerGen();
             
             var dbPath = "Database/Database.db";
-            builder.Services.AddSingleton(s=> new AppDbContext($"Data Source={dbPath}"));
-            
+            var db = builder.Services.AddSingleton<AppDbContext>(s=> new AppDbContext($"Data Source={dbPath}"));
+
             builder.Services.AddDistributedMemoryCache();  
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
@@ -46,6 +48,16 @@ namespace ItcapstoneBackend
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseDeveloperExceptionPage();
+            /*
+            else
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Home/Error");
+            }*/
+
+            app.UseRouting();
+            //app.MapGet("/", () => "Hello World!");
 
             app.UseHttpsRedirection();
 

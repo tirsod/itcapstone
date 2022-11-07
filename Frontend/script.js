@@ -1,6 +1,7 @@
 $(document).ready(function(){
     function getBaseUrl(endpoint){
         return 'https://localhost:7242/'+endpoint;
+        //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
     }
     $('#login_form').submit(function(){
         $('#login_alert').hide();
@@ -11,7 +12,7 @@ $(document).ready(function(){
         }).then(function (response) {
             console.log(response.data);
             if(!response.data.status){
-                $('#login_alert').show();
+                $('#loginalert').show();
             } else {
                 setCookie("itcapstone", response.data.cookieId, 1);
                 window.location = "index.html";
