@@ -37,6 +37,11 @@ p{
     padding-top: 100px;
     text-align: center;
 }
+
+#givemespace{
+    padding-top: 100px;
+}
+
 #home2{
     text-align: center;
 }
@@ -156,3 +161,119 @@ header{
       display: block;
     }
   }
+
+  .login_box{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background-color #000;
+  }
+
+  .container {
+    width: 400px;
+    max-width: 400px;
+    margin: 16px;
+    padding: 32px;
+    background: #ffffff;
+}
+
+.form--hidden {
+    display: none;
+}
+
+.form > *:first-child {
+    margin-top: 0;
+}
+
+.form > *:last-child {
+    margin-bottom: 0;
+}
+
+.form__title {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.form__message {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.form__message--success {
+    color: ;
+}
+
+.form__message--error {
+    color: #cc3333;
+}
+
+.form__input-group {
+    margin-bottom: 16px;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-width: 0 0 2px;
+    border-color: #80bfff;
+    outline: none;
+}
+
+.form__input:focus {
+    border-color: #4d8ccc;
+    background: #ffffff;
+    outline: none;
+}
+
+.form__input--error {
+    color: #cc3333;
+    outline: none;
+    border-color: #cc3333;
+}
+
+.form__input-error-message {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #cc3333;
+}
+
+.form__button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    background: #80bfff;
+}
+
+.form__button:hover {
+    background: #4d8ccc;
+}
+
+.form__button:active {
+    transform: scale(0.98);
+}
+
+.form__text {
+    padding: 8px;
+    text-align: center;
+}
+
+.form__link {
+    padding: 5px;
+    color: #0645AD;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}
