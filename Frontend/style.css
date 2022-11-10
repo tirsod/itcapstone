@@ -168,7 +168,7 @@ header{
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    background-color #000;
+    background-color: #ffffff;
   }
 
   .container {
@@ -202,7 +202,7 @@ header{
 }
 
 .form__message--success {
-    color: ;
+    color: #49ae42;
 }
 
 .form__message--error {
