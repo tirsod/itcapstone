@@ -1,3 +1,4 @@
+/* All Pages - General FOrmatting */
 *{
     font-family: "Lato", sans-serif;
     padding: 0;
@@ -33,27 +34,7 @@ p{
     margin: 15px, 0, 15px, 0;
 }
 
-#home{
-    padding-top: 100px;
-    text-align: center;
-}
-
-#givemespace{
-    padding-top: 100px;
-}
-
-#home2{
-    text-align: center;
-}
-.section-p1{
-    padding: 40px 80px;
-}
-
-.section-m1{
-    margin: 40px 0;
-}
-
-/* navbar styling*/
+/* Navbar - All Pages */
 header{
     padding: 0 20px;
     background-color: #80bfff;
@@ -162,6 +143,15 @@ header{
     }
   }
 
+  /* Home Page - index.html */
+
+  /* About Page - about.html */
+
+  /* Shop Page - shop.html */
+
+  /* Cart - cart.html */
+
+  /* Login & Create Account - login.html */
   .login_box{
     margin: 0;
     display: flex;
@@ -277,3 +267,5 @@ header{
 .form__link:hover {
     text-decoration: underline;
 }
+
+/* Profile - profile.html */
