@@ -144,7 +144,49 @@ header{
   }
 
   /* Home Page - index.html */
-
+  #feat-product{
+    margin: 0 20px 5px 20px;
+    padding: 10px;
+    background-color: #e6f3ff;
+    border-radius: 20px;
+  }
+  
+  #feat-product .product{
+    margin: 20px;
+    width: 23%;
+    min-width: 250px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+  }
+  
+  #feat-product .product:hover{
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+    transition: .3s;
+  }
+  
+  #feat-product .product .description{
+    text-align: start;
+  }
+  
+  #feat-product .product .description h5{
+    padding-top: 8px;
+    color: #404040;
+  }
+  
+  #feat-product .product .description h4{
+    padding-top: 8px;
+    color: #009933;
+  }
+  
+  #feat-product .product-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
   /* About Page - about.html */
 
   /* Shop Page - shop.html */
