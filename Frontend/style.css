@@ -34,6 +34,17 @@ p{
     margin: 15px, 0, 15px, 0;
 }
 
+#title{
+  padding-top: 100px;
+  padding-bottom: 32px;
+  text-align: center;
+}
+
+#section-header{
+padding: 5px 16px;
+text-align: center;
+}
+
 /* Navbar - All Pages */
 header{
     padding: 0 20px;
