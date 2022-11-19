@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using ItcapstoneBackend.Database;
+using ItcapstoneBackend.Domain;
 using ItcapstoneBackend.Domain.Requests;
 using ItcapstoneBackend.Domain.Responses;
 using Microsoft.AspNetCore.Http;
@@ -29,15 +30,26 @@ namespace ItcapstoneBackend.Controllers
         {
             var response = new LoginResponse();
             response.Status = false;
-            var reqBody = JsonSerializer.Deserialize<LoginRequest>(json.GetRawText());
+            response.Nickname = "error";
+            response.CookieId = "-1";
+            LoginRequest? reqBody = JsonSerializer.Deserialize<LoginRequest>(json.GetRawText());
+
             if (reqBody != null)
             {
-                var result = _db.Customers.FirstOrDefault(customer =>
-                    customer.CustomerName == reqBody.Username
-                    && customer.CustomerPassword == reqBody.Password);
-                response.Status = true;
-                response.Nickname = result.CustomerName;
-                response.CookieId = result.CustomerID.ToString();
+                var result = _db.Customers
+                    .Where(c => c.CustomerName == reqBody.Username && c.CustomerPassword == reqBody.Password)
+                    .DefaultIfEmpty()
+                    .First();
+
+                if (result != null)
+                {
+                    response.Status = true;
+                    response.Nickname = result.CustomerName;
+                    response.CookieId = result.CustomerID.ToString();
+                }
+                
+                /*_db.Customers.
+                FirstOrDefault(customer => customer.CustomerName == reqBody.Username && customer.CustomerPassword == reqBody.Password);*/
             }
 
             return response;

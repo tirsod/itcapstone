@@ -1,6 +1,7 @@
 $(document).ready(function(){
     function getBaseUrl(endpoint){
-        return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
+        //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
+        return 'https://localhost:7242/'+endpoint;
     }
     $('#login_form').submit(function(){
         $('#login_alert').hide();
@@ -16,6 +17,51 @@ $(document).ready(function(){
                 setCookie("itcapstone", response.data.cookieId, 1);
                 window.location = "index.html";
             }
+        });
+        return false;
+    });
+	
+	$('#signup_form').submit(function(){
+		
+        $('#signupalert').hide();
+		$('#signupsuccess').hide();
+
+        axios.post(getBaseUrl('Signup'),
+        {
+			
+            username: $('#newusername').val(),
+            password: $('#newpassword').val(),
+			email: $('#newemail').val()
+			
+        }).then(function (response) {
+			
+			$('#signupalert').show();
+            
+            console.log(response.data);
+			
+            if(!response.data.status){
+                
+				switch (response.data.code){
+					case "usernameRequired":
+						$('#signupalert').html('The username field is required.');
+						break;
+					case "usernameInUse":
+						$('#signupalert').html('That username is already in use.');
+						break;
+					case "passwordRequired":
+						$('#signupalert').html('The password field is required.');
+						break;
+					case "passwordTooShort":
+						$('#signupalert').html('Your password should be over 8 characters in length.');
+						break;
+				}
+				
+            } else {
+                $('#signupalert').hide();
+                $('#signupsuccess').show();
+				$('#signupsuccess').html('Your account has been successfully created.');
+            }
+			
         });
         return false;
     });
