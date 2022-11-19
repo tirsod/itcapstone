@@ -43,20 +43,25 @@
         <h4>Now happily offering extended sizes from XS to 3XL</h4>
    </section>
    <section id="page-sort">
-        <select>
-            <option class="all" onclick="window.location.href='shop.html'">All Products</option>
-            <option class="gender" onclick="window.location.href='men.html'">Men</option>
-            <option class="sub-section" onclick="window.location.href='menshirt.html'">Men's Shirts</option>
-            <option class="sub-section" onclick="window.location.href='mensweater.html'">Men's Sweaters</option>
-            <option class="sub-section" onclick="window.location.href='menshort.html'">Men's Shorts</option>
-            <option class="sub-section" onclick="window.location.href='menpant.html'">Men's Pants</option>
-            <option class="gender" onclick="window.location.href='women.html'">Women</option>
-            <option class="sub-section" onclick="window.location.href='womenshirt.html'">Women's Shirts</option>
-            <option class="sub-section" onclick="window.location.href='womensweater.html'">Women's Sweaters</option>
-            <option class="sub-section" onclick="window.location.href='womenshort.html'">Women's Shorts</option>
-            <option class="sub-section" onclick="window.location.href='womenpant.html'">Women's Pants</option>
-        </select>
-   </section>
+    <select onchange="la(this.value)">
+        <option class="all" value="shop.html">All Products</option>
+        <option class="gender" value="men.html">Men</option>
+        <option class="sub-section" value="menshirt.html" disabled selected>Men's Shirts</option>
+        <option class="sub-section" value="mensweater.html">Men's Sweaters</option>
+        <option class="sub-section" value="menshort.html">Men's Shorts</option>
+        <option class="sub-section" value="menpant.html">Men's Pants</option>
+        <option class="gender" value="women.html">Women</option>
+        <option class="sub-section" value="womenshirt.html">Women's Shirts</option>
+        <option class="sub-section" value="womensweater.html">Women's Sweaters</option>
+        <option class="sub-section" value="womenshort.html">Women's Shorts</option>
+        <option class="sub-section" value="womenpant.html">Women's Pants</option>
+    </select>
+    </section>
+    <script>
+        function la(src){
+            window.location=src;
+        }
+       </script>
    <script src="index.js"></script>
 </body>
 </html>
