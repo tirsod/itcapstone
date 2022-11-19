@@ -217,6 +217,13 @@ header{
   cursor: pointer;
 }
 
+#shop.product img{
+  display: flex;
+  min-width: 230px;
+  width: auto; 
+  height: auto;
+}
+
 #shop .product:hover{
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
   transition: .3s;
