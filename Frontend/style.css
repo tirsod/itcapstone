@@ -220,7 +220,7 @@ header{
 #shop.product img{
   display: flex;
   min-width: 230px;
-  width: auto; 
+  width: fit-content;
   height: auto;
 }
 
