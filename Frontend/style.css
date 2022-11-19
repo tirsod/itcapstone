@@ -221,7 +221,7 @@ header{
 #shop .product img{
   width: 100%;
   object-fit: contain;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #shop .product:hover{
