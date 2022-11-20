@@ -171,6 +171,7 @@ header{
     margin: 20px;
     width: 23%;
     min-width: 250px;
+    max-width: 350px;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 10px;
