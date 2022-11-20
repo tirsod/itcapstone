@@ -288,7 +288,87 @@ header{
   justify-content: center;
 }
 
-/* Shop Filter */
+/* Single Product Details */
+
+#pathway{
+  padding: 5px 40px;
+}
+
+#pathway a{
+  color: #808080;
+  text-decoration: none;
+}
+
+#pathway a:hover{
+  color: #404040;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+#product-details{
+  display: flex;
+  margin: 20px 40px 0 30px;
+}
+
+.sing-product-img{
+  width: 40%;
+  display: flex;
+}
+
+
+#product-details .sing-product-deets{
+  width: 60%;
+  margin: 0 30px;
+  padding-left: 30px;
+}
+
+#product-details .sing-product-deets h4{
+  padding: 40px 0 5px 0;
+}
+
+#product-details .sing-product-deets h3{
+  padding-top: 5px;
+  padding-bottom: 10px;
+  color: #009933;
+}
+
+#product-details .sing-product-deets select{
+  display: block;
+  padding: 5px 5px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+#product-details .sing-product-deets input{
+  width: 45px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px; 
+}
+
+#product-details .sing-product-deets input:focus{
+  outline: none;
+}
+
+#product-details .sing-product-deets button{
+  background-color: #e6f3ff;
+  font-color: #404040;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+}
+
+#product-details .sing-product-deets button:hover{
+  background-color: #cce6ff;
+  font-color: #000;
+}
+
+#product-details .sing-product-deets span{
+  line-height: 5px;
+  margin-bottom: 10px;
+  padding: 5px 0 10px 0;
+}
 
   /* Cart - cart.html */
 
