@@ -200,6 +200,45 @@ header{
 
   /* About Page - about.html */
 
+
+  /* Shop Filter */
+
+  #page-sort{
+    display: flex;
+    position: relative;
+  }
+  
+  #page-sort select{
+    display: block;
+    margin: 0 auto;
+    align-content: center;
+    padding: 5px 5px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    border: none;
+    background-color:  none;
+    font-size: 18px;
+  
+  }
+  
+  #page-sort select .all{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left
+  }
+  
+  #page-sort select .gender{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  #page-sort select .sub-section{
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+  }
+
   /* Shop Page - shop.html */
 #shop{
   margin: 0 20px 5px 20px;
