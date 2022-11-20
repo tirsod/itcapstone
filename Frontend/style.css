@@ -40,6 +40,11 @@ p{
   text-align: center;
 }
 
+#non-title-space{
+  padding-top: 50px;
+  padding-bottom: 16px;
+}
+
 #section-header{
 padding: 5px 16px;
 text-align: center;
