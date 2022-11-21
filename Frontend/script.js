@@ -1,8 +1,35 @@
 $(document).ready(function(){
     function getBaseUrl(endpoint){
         //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
+        console.log("cookie: "+getCookie('itcapstone'));
         return 'https://localhost:7242/'+endpoint;
+        
     }
+
+    axios.get(getBaseUrl('Shop'), {
+        params: {
+            id: getCookie('itcapstone')
+          }
+    })
+        .then(function (response) {
+            console.log("islogged");
+            console.log(response.data);
+            if(response.data.Status){
+                //$("#profile_button").hide();
+                $('#profile_button').show();
+
+                console.log(response.data.Nickname);
+                console.log("pain");
+                $('#profile_button a').html(response.data.Nickname);
+
+                $('#login_button').hide();
+                $('#logout_button').show();
+            } else {
+                $('#login_button').show();
+                $('#logout_button').hide();
+            }
+        });
+
     $('#login_form').submit(function(){
         $('#login_alert').hide();
         axios.post(getBaseUrl('Login'),
@@ -15,10 +42,16 @@ $(document).ready(function(){
                 $('#loginalert').show();
             } else {
                 setCookie("itcapstone", response.data.cookieId, 1);
+                console.log(response.data.cookieId);
                 window.location = "index.html";
             }
         });
         return false;
+    });
+
+    
+    $('#logout_button').click( function(){
+        eraseCookie("itcapstone");
     });
 	
 	$('#signup_form').submit(function(){
@@ -66,19 +99,6 @@ $(document).ready(function(){
         return false;
     });
 
-    axios.get(getBaseUrl('Shop'), {
-        params: {
-            id: getCookie('itcapstone') == null ? 0 : 1
-          }
-    })
-        .then(function (response) {
-            if(response.data.Status){
-                $('#profile_button').show();
-                $('#profile_button a').html(response.data.Nickname);
-            } else {
-                $('#login_button').show();
-            }
-        });
 });
 
 function setCookie(name,value,days) {
@@ -98,7 +118,7 @@ function getCookie(name) {
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
-    return null;
+    return 0;
 }
 function eraseCookie(name) {   
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';

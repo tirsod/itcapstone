@@ -61,15 +61,6 @@ namespace ItcapstoneBackend.Controllers
                     _db.Customers.Add( new Domain.Customer {CustomerName = reqBody.Username, CustomerPassword = reqBody.Password, CustomerAddress = "N/A" } ); //FIXME: Add email field
                     _db.SaveChanges();
                 }
-
-            /*
-                var result = _db.Customers.FirstOrDefault(customer =>
-                    customer.CustomerName == reqBody.Username
-                    && customer.CustomerPassword == reqBody.Password);
-                response.Status = true;
-                response.Nickname = result.CustomerName;
-                response.CookieId = result.CustomerID.ToString();
-            */
             }
 
             return response;

@@ -28,24 +28,33 @@ namespace ItcapstoneBackend.Controllers
         [HttpGet]
         public string IsLogged(string id)
         {
+
+            
             if (id == "0")
-                return JsonSerializer.Serialize(new LoginResponse{Status=false});
+            {
+                return JsonSerializer.Serialize(new LoginResponse { Status = false });
+            }
+                
             
             var response = new LoginResponse();
             var customer = GetCustomerBy(id);
             response.Status = customer != null;
 
             if (customer != null)
+            {
                 response.Nickname = customer.CustomerName;
-            
+            }
+
+            response.Nickname = "hola";
+               
             return JsonSerializer.Serialize(response);
         }
 
         private Customer? GetCustomerBy(string id)
         {
-            var result = _db.Customers.FirstOrDefault(
-                customer =>
-                customer.CustomerID == int.Parse(id));
+            var result = _db.Customers.Where(c => c.CustomerID == int.Parse(id))
+                    .DefaultIfEmpty()
+                    .First();
             return result;
         }
     }
