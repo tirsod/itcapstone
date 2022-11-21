@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA_Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Capstone Outfitters - Shop</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/8c5cbea69b.js" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+         <div class="navbar">
+            <img src="https://user-images.githubusercontent.com/115847180/200137540-ed1b067a-8163-46a3-89e6-4e9657519933.jpeg" alt="Logo_Navbar" height="50" width="250">
+         </div> 
+         <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html">Login/Create Account</a></li>
+                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
+            </ul>
+         </nav>
+         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <ul class="mobile-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html">Login/Create Account</a></li>
+                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
+            </ul>
+        </div>
+       </header>
+       <section>
+        <h1 id="non-title-space"></h1>
+       </section>
+       <section id="pathway">
+        <h6><a href="shop.html">Shop</a> / <a href="men.html">Men</a> / <a href="mensweater.html">Men's Sweaters</a></h6>
+       </section>
+       <section id="product-details">
+            <div class="sing-product-imgs">
+                <img src="https://user-images.githubusercontent.com/115847180/202759411-1be2452c-99fb-4e15-a8be-2ddc3a252937.png" width="auto" height="500" alt="Men_Active_Barcode">
+            </div>
+            <div class="sing-product-deets">
+                <h4>Men's Barcode Hoodie</h4>
+                <h3>$40</h3>
+                <select>
+                    <option>Select Size</option>
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                    <option>2XL</option>
+                    <option>3XL</option>
+                </select>
+                <input type="number" value="1">
+                <button>Add to cart</button>
+                <h4>Product Details</h4>
+                <span>Our newly designed lightweight hoodie is 80% cotton and 20% polyester, so it is not only soft but maintains its shape over time. This is perfect for cooler days, visiting your dad who notoriously says "Don't touch the thermostat. If you're cold put on another layer," and lounging. This hoodie is slim-fit, so we recommend sizing up for a more classic fit.</span>
+            </div>
+       </section>
+       <br>
+       <section id="feat-product">
+        <h3 id="section-header">Related Products</h3>
+            <div class="product-box">
+                <div class="product" onclick="window.location.href='MShort2.html';">
+                    <img src="https://user-images.githubusercontent.com/115847180/202916450-fca62cf3-8a18-4b69-b1e7-a9079034a77b.jpg" alt="Men_Short_2">
+                    <div class="description">
+                        <h5>Men's Lounge Shorts</h5>
+                        <h4>$30</h4>
+                    </div>    
+                </div>
+                <div class="product">
+                    <img src="https://user-images.githubusercontent.com/115847180/202916343-e644746a-8b57-4d62-8c52-e5bbdf6d7076.jpg" alt="Men_Tee_Barcode">
+                    <div class="description" onclick="window.location.href='MBarcodeT.html';">
+                        <h5>Men's Barcode Tee</h5>
+                        <h4>$20</h4>
+                    </div>
+                </div>      
+                <div class="product" onclick="window.location.href='MLogoAT.html';">
+                    <img src="https://user-images.githubusercontent.com/115847180/202916326-d0ff7c62-ee08-475f-aad5-4c45dee0e26a.jpg" alt="Men_Active_FullLogo">
+                    <div class="description">
+                        <h5>Men's Full Logo Active Tee</h5>
+                        <h4>$25</h4>
+                    </div>
+                </div>    
+                <div class="product" onclick="window.location.href='MPant1.html';">
+                    <img src="https://user-images.githubusercontent.com/115847180/202916452-5b4a6151-1866-4372-bc6b-33330571d23e.jpg" alt="Men_Pant">
+                    <div class="description">
+                        <h5>Men's Sweatpants</h5>
+                        <h4>$25</h4>
+                    </div>
+                </div>    
+            </div>
+       </section>
+    </body>
+</html>
