@@ -47,7 +47,11 @@
          </div>
          <div class="main">
             <div class="col-md-6 col-sm-12">
+            <br><br>
                <div class="login-form">
+                <h1>Welcome back</h2>
+                <h2>Login</h2><br>
+
                   <form action="https://localhost:7242/Login" id="login_form">
                      <div class="alert alert-danger" role="alert" style="display:none;" id="loginalert">
                         Could not authenticate the user: wrong password.
@@ -64,6 +68,27 @@
                      <!--<button type="submit" class="btn btn-secondary">Register</button>-->
                   </form>
                </div>
+               <br><br>
+               <h1>First time?</h2>
+               <h2>Create an account</h2><br>
+               <div class="signup-form">
+                <form action="https://localhost:7242/Signup" id="signup_form">
+
+                   <div class="alert alert-danger" role="alert" style="display:none;" id="signupalert">Signing up...</div>
+                   <div class="alert alert-danger" role="alert" style="display:none; background-color:darkgreen; border-color:greenyellow; color:white" id="signupsuccess">Signing up...</div>
+
+                   <div class="form-group">
+                      <label>User Name</label>
+                      <input type="text" class="form-control" id="newusername" placeholder="User Name">
+                   </div>
+                   <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" id="newpassword" placeholder="Password">
+                   </div>
+                   <button type="submit" class="btn btn-black" id="login_button">Sign up</button>
+                   <!--<button type="submit" class="btn btn-secondary">Register</button>-->
+                </form>
+             </div>
             </div>
          </div>         
     </body>
