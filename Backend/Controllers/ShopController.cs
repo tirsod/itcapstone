@@ -45,7 +45,6 @@ namespace ItcapstoneBackend.Controllers
                 response.Nickname = customer.CustomerName;
             }
 
-            response.Nickname = "hola";
                
             return JsonSerializer.Serialize(response);
         }
