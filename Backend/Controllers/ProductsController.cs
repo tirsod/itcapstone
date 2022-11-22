@@ -26,9 +26,18 @@ namespace ItcapstoneBackend.Controllers
         }
 
         [HttpGet]
-        public string All(string id)
+        public string GetAll(string featured)
         {
 
+            List<Product> response = new List<Product>();
+
+            if (featured == "1")
+            {
+                response = GetFeatured();
+            }
+
+            return JsonSerializer.Serialize(response);
+            /*
             if (id == "0")
             {
                 return JsonSerializer.Serialize(new LoginResponse { Status = false });
@@ -45,7 +54,14 @@ namespace ItcapstoneBackend.Controllers
             }
 
                
-            return JsonSerializer.Serialize(response);
+            */
+
+        }
+
+        private List<Product> GetFeatured()
+        {
+            var results = _db.Products.Where(p => p.Featured == 1).ToList();
+            return results;
         }
 
         private Customer? GetCustomerBy(string id)
