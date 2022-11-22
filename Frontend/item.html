@@ -58,16 +58,16 @@
                 <h4 id="itemTitle"></h4>
                 <h3 id="itemPrice"></h3>
                 <select id="itemSize">
-                    <option>Select Size</option>
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                    <option>2XL</option>
-                    <option>3XL</option>
+                    <option value="none">Select Size</option>
+                    <option value="xs">XS</option>
+                    <option value="s">S</option>
+                    <option value="m">M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XL</option>
+                    <option value="2xl">2XL</option>
+                    <option value="3xl">3XL</option>
                 </select>
-                <input type="number" id="itemQuantity" value="1">
+                <input type="number" id="itemQuantity" value="1" min="1" max="99">
                 <button id="itemAdd">Add to cart</button>
                 <h4>Product Details</h4>
                 <span id="itemDesc"></span>

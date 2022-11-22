@@ -25,6 +25,16 @@ namespace ItcapstoneBackend.Controllers
             _db = db;
         }
 
+        [HttpPost("add")]
+        public string AddToCart([FromBody] JsonElement json)
+        {
+            var reqBody = JsonSerializer.Deserialize<AddToCartRequest>(json.GetRawText());
+
+            var code = AddToShoppingCart(reqBody.CustomerID, reqBody.ProductID, reqBody.Size, reqBody.Quantity);
+
+            return code;
+        }
+
         [HttpGet("id")]
         public string GetById(string id)
         {
@@ -81,7 +91,6 @@ namespace ItcapstoneBackend.Controllers
 
         private Product GetProductById(string id)
         {
-
             int val;
             if (!Int32.TryParse(id, out val))
             {
@@ -92,15 +101,40 @@ namespace ItcapstoneBackend.Controllers
                     .DefaultIfEmpty()
                     .First();
             return result;
+        }
 
-            /*
+        private string AddToShoppingCart(string customerId, string productId, string size, string quantity)
+        {
+            var code = "success";
+
+            if (customerId == null) return "customerNull";
+            if (productId == null) return "productNull";
+            if (size == null) return "sizeNull";
+            if (quantity == null) return "quantityNull";
+
+            var _customerId = int.Parse(customerId);
+            var _productId = int.Parse(productId);
+            var _quantity = int.Parse(quantity);
+
             var dbPath = "Database/Database.db";
             using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
             {
-                
-            }*/
+                if (db.Products.Where(p => p.ProductID == _productId).DefaultIfEmpty().First() == null)
+                {
+                    code = "noProduct";
+                }
+                else if (db.Customers.Where(c => c.CustomerID == _customerId).DefaultIfEmpty().First() == null)
+                {
+                    code = "noCustomer";
+                }
+                else
+                {
+                    db.CartItems.Add(new Domain.CartItem { ProductID = _productId, CustomerID = _customerId, Size = size, Quantity = _quantity, Status = "inCart" });
+                    db.SaveChanges();
+                }
+            }
 
-            
+            return code;
         }
     }
 }
