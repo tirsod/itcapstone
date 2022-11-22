@@ -52,6 +52,13 @@ namespace ItcapstoneBackend.Controllers
 
         private Customer? GetCustomerBy(string id)
         {
+
+            int val;
+            if (!Int32.TryParse(id, out val))
+            {
+                return new Customer();
+            }
+
             var dbPath = "Database/Database.db";
             using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
             {

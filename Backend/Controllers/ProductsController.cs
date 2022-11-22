@@ -82,6 +82,12 @@ namespace ItcapstoneBackend.Controllers
         private Product GetProductById(string id)
         {
 
+            int val;
+            if (!Int32.TryParse(id, out val))
+            {
+                return new Product();
+            }
+
             var result = _db.Products.Where(p => p.ProductID == Int32.Parse(id))
                     .DefaultIfEmpty()
                     .First();
