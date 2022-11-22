@@ -16,10 +16,10 @@ namespace ItcapstoneBackend.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly ILogger<ShopController> _logger;
+        private readonly ILogger<ProductsController> _logger;
         private readonly AppDbContext _db;
 
-        public ProductsController(ILogger<ShopController> logger, AppDbContext db)
+        public ProductsController(ILogger<ProductsController> logger, AppDbContext db)
         {
             _logger = logger;
             _db = db;
@@ -85,8 +85,13 @@ namespace ItcapstoneBackend.Controllers
 
         private List<Product> GetFeatured()
         {
-            var results = _db.Products.Where(p => p.Featured == 1).ToList();
-            return results;
+            
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                var results = db.Products.Where(p => p.Featured == 1).ToList();
+                return results;
+            }
         }
 
         private Product GetProductById(string id)
@@ -97,10 +102,14 @@ namespace ItcapstoneBackend.Controllers
                 return new Product();
             }
 
-            var result = _db.Products.Where(p => p.ProductID == Int32.Parse(id))
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                var result = db.Products.Where(p => p.ProductID == Int32.Parse(id))
                     .DefaultIfEmpty()
                     .First();
-            return result;
+                return result;
+            }
         }
 
         private string AddToShoppingCart(string customerId, string productId, string size, string quantity)

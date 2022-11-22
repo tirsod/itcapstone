@@ -15,10 +15,10 @@ namespace ItcapstoneBackend.Controllers
     [Route("[controller]")]
     public class SignupController : ControllerBase
     {
-        private readonly ILogger<LoginController> _logger;
+        private readonly ILogger<SignupController> _logger;
         private readonly AppDbContext _db;
 
-        public SignupController(ILogger<LoginController> logger, AppDbContext db)
+        public SignupController(ILogger<SignupController> logger, AppDbContext db)
         {
             _logger = logger;
             _db = db;
