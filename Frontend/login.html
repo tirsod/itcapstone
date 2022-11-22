@@ -13,35 +13,37 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="script.js"></script>
     </head>
-    <body></body>
-        <header>
-         <div class="navbar">
-            <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
-         </div> 
-         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="shop.html"> Shop</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="login.html" class="active">Login/Create Account</a></li>
-                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
-            </ul>
-         </nav>
-         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <ul class="mobile-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="shop.html"> Shop</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="login.html">Login/Create Account</a></li>
-                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
-            </ul>
-        </div>
-        </header>
+    <body>
+    <header>
+      <div class="navbar">
+         <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
+      </div> 
+      <nav>
+         <ul>
+             <li><a href="index.html" class="active">Home</a></li>
+             <li><a href="about.html">About Us</a></li>
+             <li><a href="shop.html"> Shop</a></li>
+             <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+             <li><a href="login.html" id="login_button">Login/Create Account</a></li>
+             <li><a href="login.html" id="logout_button">Logout</a></li>
+             <li><a href="profile.html"><i class="fa-regular fa-user"><label id="profile_button">Profile</label></i></a></li>
+         </ul>
+      </nav>
+      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+         <div class="bar1"></div>
+         <div class="bar2"></div>
+         <div class="bar3"></div>
+         <ul class="mobile-menu">
+             <li><a href="index.html" class="active">Home</a></li>
+             <li><a href="about.html">About Us</a></li>
+             <li><a href="shop.html"> Shop</a></li>
+             <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+             <li><a href="login.html" id="login_button">Login/Create Account</a></li>
+             <li><a href="login.html" id="logout_button">Logout</a></li>
+             <li><a href="profile.html"><i class="fa-regular fa-user"><label id="profile_button">Profile</label></i></a></li>
+         </ul>
+     </div>
+    </header>
         <section>
                 <h1 id="title"></h1>
         </section>
