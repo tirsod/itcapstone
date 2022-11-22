@@ -22,6 +22,7 @@ namespace ItcapstoneBackend.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(_connectionString);
+            
         }
     }
 }

@@ -34,8 +34,9 @@ namespace ItcapstoneBackend.Controllers
             if (featured == "1")
             {
                 response = GetFeatured();
+                return JsonSerializer.Serialize(response);
             }
-
+            
             return JsonSerializer.Serialize(response);
             /*
             if (id == "0")

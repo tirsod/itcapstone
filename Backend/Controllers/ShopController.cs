@@ -9,6 +9,7 @@ using ItcapstoneBackend.Domain.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace ItcapstoneBackend.Controllers
 {
@@ -51,10 +52,14 @@ namespace ItcapstoneBackend.Controllers
 
         private Customer? GetCustomerBy(string id)
         {
-            var result = _db.Customers.Where(c => c.CustomerID == int.Parse(id))
-                    .DefaultIfEmpty()
-                    .First();
-            return result;
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                var result = db.Customers.Where(c => c.CustomerID == int.Parse(id))
+                                    .DefaultIfEmpty()
+                                    .First();
+                return result;
+            }
         }
     }
 }
