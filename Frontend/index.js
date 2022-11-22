@@ -26,7 +26,7 @@
                     <img src="img/${i.Image}.jpg" alt="${i.Title}">
                     <div class="description" onclick="window.location.href='item.html?id=${i.ProductID}';">
                         <h5>${i.Title}</h5>
-                        <h4>${i.Price}</h4>
+                        <h4>$${i.Price}</h4>
                     </div>
                 </div>    
                 `);

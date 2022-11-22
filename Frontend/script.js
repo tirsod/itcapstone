@@ -75,9 +75,7 @@ window.addEventListener( "pageshow", function ( event ) {
   $(document).ready(function(){
     function getBaseUrl(endpoint){
         //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
-        console.log("cookie: "+getCookie('itcapstone'));
         return 'https://localhost:7242/'+endpoint;
-        
     }
 
     axios.get(getBaseUrl('Shop'), {
@@ -86,14 +84,9 @@ window.addEventListener( "pageshow", function ( event ) {
           }
     })
         .then(function (response) {
-            console.log("islogged");
-            console.log(response.data);
             if(response.data.Status){
                 //$("#profile_button").hide();
                 $('#profile_button').show();
-
-                console.log(response.data.Nickname);
-                console.log("pain");
                 $('#profile_button').html(response.data.Nickname);
 
                 $('#login_button').hide();

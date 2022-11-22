@@ -52,12 +52,12 @@
        </section>
        <section id="product-details">
             <div class="sing-product-imgs">
-                <img src="https://user-images.githubusercontent.com/115847180/202916296-1cfc89ae-1b7b-4edc-9756-e0d60967da6f.jpg" width="auto" height="500" alt="Men_Active_Barcode">
+                <img id="itemImage" src="" width="auto" height="500" alt="Men_Active_Barcode">
             </div>
             <div class="sing-product-deets">
-                <h4>Men's Barcode Active Tee</h4>
-                <h3>$25</h3>
-                <select>
+                <h4 id="itemTitle"></h4>
+                <h3 id="itemPrice"></h3>
+                <select id="itemSize">
                     <option>Select Size</option>
                     <option>XS</option>
                     <option>S</option>
@@ -67,10 +67,10 @@
                     <option>2XL</option>
                     <option>3XL</option>
                 </select>
-                <input type="number" value="1">
-                <button>Add to cart</button>
+                <input type="number" id="itemQuantity" value="1">
+                <button id="itemAdd">Add to cart</button>
                 <h4>Product Details</h4>
-                <span>Our Active Tee is made to fit your active lifestyle. This lightweight, breathable performance tee is perfect for the gym, long hours in warm networking closets, weekend-long gaming tournaments, and any other event you want to remain cool at. This shirt is standard sizing.</span>
+                <span id="itemDesc"></span>
             </div>
        </section>
        <br>
@@ -108,5 +108,6 @@
     
             </div>
        </section>
+       <script src="item.js"></script>
     </body>
 </html>

@@ -25,19 +25,33 @@ namespace ItcapstoneBackend.Controllers
             _db = db;
         }
 
+        [HttpGet("id")]
+        public string GetById(string id)
+        {
+            Product response = new Product();
+
+            if (id != null)
+            {
+                response = GetProductById(id);
+            }
+
+            return JsonSerializer.Serialize(response);
+        }
+
         [HttpGet]
         public string GetAll(string featured)
         {
 
-            List<Product> response = new List<Product>();
+            List<Product> responses = new List<Product>();
+            Product response = new Product();
 
             if (featured == "1")
             {
-                response = GetFeatured();
-                return JsonSerializer.Serialize(response);
+                responses = GetFeatured();
+                return JsonSerializer.Serialize(responses);
             }
-            
-            return JsonSerializer.Serialize(response);
+
+            return JsonSerializer.Serialize(responses);
             /*
             if (id == "0")
             {
@@ -65,12 +79,22 @@ namespace ItcapstoneBackend.Controllers
             return results;
         }
 
-        private Customer? GetCustomerBy(string id)
+        private Product GetProductById(string id)
         {
-            var result = _db.Customers.Where(c => c.CustomerID == int.Parse(id))
+
+            var result = _db.Products.Where(p => p.ProductID == Int32.Parse(id))
                     .DefaultIfEmpty()
                     .First();
             return result;
+
+            /*
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                
+            }*/
+
+            
         }
     }
 }
