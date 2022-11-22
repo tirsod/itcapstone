@@ -1,99 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link href="style.css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA_Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Capstone Outfitters</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/8c5cbea69b.js" crossorigin="anonymous"></script>
         <script src="script.js"></script>
     </head>
-
-    <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-         <div class="container px-4 px-lg-5">
-             <a class="navbar-brand" href="#!">Capstone Outfitters</a>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-
-                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                     <li class="nav-item" id="profile_button"><a class="nav-link" href="profile.html">Profile</a></li>
-                     <li class="nav-item" id="login_button"><a class="nav-link" href="login.html">Login/Create Account</a></li>
-                     <li class="nav-item" id="logout_button"><a class="nav-link" href="index.html">Logout</a></li>
-
-                     <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                             <li><a class="dropdown-item" href="#!">All Products</a></li>
-                             <li><hr class="dropdown-divider" /></li>
-                             <li><a class="dropdown-item" href="#!">Shirts</a></li>
-                             <li><a class="dropdown-item" href="#!">Sweaters</a></li>
-                             <li><a class="dropdown-item" href="#!">Pants</a></li>
-                             <li><a class="dropdown-item" href="#!">Shorts</a></li>
-                         </ul>
-                     </li>
-                 </ul>
-                 <form class="d-flex">
-                     <button class="btn btn-outline-dark" type="submit">
-                         <i class="bi-cart-fill me-1"></i>
-                         Cart
-                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                     </button>
-                 </form>
-             </div>
-         </div>
-     </nav>
-        <div class="sidenav">
-            <div class="login-main-text">
-               <h2>Login<br>or<br>Create Account</h2>
-               <p>An account is not necessary, however, it is highly recommended</p>
-            </div>
-         </div>
-         <div class="main">
-            <div class="col-md-6 col-sm-12">
-            <br><br>
-               <div class="login-form">
-                <h1>Welcome back</h2>
-                <h2>Login</h2><br>
-
-                  <form action="https://localhost:7242/Login" id="login_form">
-                     <div class="alert alert-danger" role="alert" style="display:none;" id="loginalert">
-                        Could not authenticate the user: wrong password.
-                     </div>
-                     <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" class="form-control" id="username" placeholder="User Name">
-                     </div>
-                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                     </div>
-                     <button type="submit" class="btn btn-black" id="login_button">Login</button>
-                     <!--<button type="submit" class="btn btn-secondary">Register</button>-->
-                  </form>
-               </div>
-               <br><br>
-               <h1>First time?</h2>
-               <h2>Create an account</h2><br>
-               <div class="signup-form">
-                <form action="https://localhost:7242/Signup" id="signup_form">
-
-                   <div class="alert alert-danger" role="alert" style="display:none;" id="signupalert">Signing up...</div>
-                   <div class="alert alert-danger" role="alert" style="display:none; background-color:darkgreen; border-color:greenyellow; color:white" id="signupsuccess">Signing up...</div>
-
-                   <div class="form-group">
-                      <label>User Name</label>
-                      <input type="text" class="form-control" id="newusername" placeholder="User Name">
-                   </div>
-                   <div class="form-group">
-                      <label>Password</label>
-                      <input type="password" class="form-control" id="newpassword" placeholder="Password">
-                   </div>
-                   <button type="submit" class="btn btn-black" id="login_button">Sign up</button>
-                   <!--<button type="submit" class="btn btn-secondary">Register</button>-->
+    <body></body>
+        <header>
+         <div class="navbar">
+            <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
+         </div> 
+         <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html" class="active">Login/Create Account</a></li>
+                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
+            </ul>
+         </nav>
+         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <ul class="mobile-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html">Login/Create Account</a></li>
+                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
+            </ul>
+        </div>
+        </header>
+        <section>
+                <h1 id="title"></h1>
+        </section>
+            <div class="login_box">
+            <div class="container">
+                <form class="form" id="login">
+                    <h1 class="form__title">Login</h1>
+                    <div class="form__message form__message--error"></div>
+                    <div class="form__input-group">
+                        <input type="text" class="form__input" autofocus placeholder="Username">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" class="form__input" autofocus placeholder="Password">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <button class="form__button" type="submit">Submit</button><br>
+                    <p class="form__text">
+                        Don't have an account?<a class="form__link" href="./" id="linkCreateAccount">Create account</a>
+                    </p>
                 </form>
-             </div>
+                <form class="form form--hidden" id="createAccount">
+                    <h1 class="form__title">Create Account</h1>
+                    <div class="form__message form__message--error"></div>
+                    <div class="form__input-group">
+                        <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="text" class="form__input" autofocus placeholder="Email Address">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" class="form__input" autofocus placeholder="Password">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" class="form__input" autofocus placeholder="Confirm password">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <button class="form__button" type="submit">Submit</button><br>
+                    <p class="form__text">
+                        Already have an Account?<a class="form__link" href="./" id="linkLogin">Sign in</a>
+                    </p>
+                </form>
             </div>
-         </div>         
+        </div>
+        <script src="index.js"></script>
     </body>
 </html>
-
