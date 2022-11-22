@@ -23,10 +23,10 @@
                 console.log(i.Image);
 
                 $("#product_box").append(`
-                <div class="product" onclick="window.location.href='item.html?id=${i.id}';">
-                    <img src="img/${i.Image}.jpg" alt="${i.title}">
-                    <div class="description" onclick="window.location.href='item.html?id=${i.id}';">
-                        <h5>${i.title}</h5>
+                <div class="product" onclick="window.location.href='item.html?id=${i.ProductID}';">
+                    <img src="img/${i.Image}.jpg" alt="${i.Title}">
+                    <div class="description" onclick="window.location.href='item.html?id=${i.ProductID}';">
+                        <h5>${i.Title}</h5>
                         <h4>${i.Price}</h4>
                     </div>
                 </div>    
