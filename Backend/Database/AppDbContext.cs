@@ -6,7 +6,10 @@ namespace ItcapstoneBackend.Database
     public class AppDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
-        
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Product> Products { get; set; }
+
         private readonly string _connectionString;
         public AppDbContext(string connectionString)
         {

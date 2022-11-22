@@ -29,7 +29,6 @@ namespace ItcapstoneBackend.Controllers
         public string All(string id)
         {
 
-            
             if (id == "0")
             {
                 return JsonSerializer.Serialize(new LoginResponse { Status = false });
