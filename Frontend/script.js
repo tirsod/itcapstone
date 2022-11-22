@@ -94,7 +94,7 @@ window.addEventListener( "pageshow", function ( event ) {
 
                 console.log(response.data.Nickname);
                 console.log("pain");
-                $('#profile_button a').html(response.data.Nickname);
+                $('#profile_button').html(response.data.Nickname);
 
                 $('#login_button').hide();
                 $('#logout_button').show();
