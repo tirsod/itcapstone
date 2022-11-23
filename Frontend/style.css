@@ -405,11 +405,11 @@ header{
   }
 
   #cart button{
-    padding: 5px;
+    padding: 4px;
   }
   #cart button:hover{
     background-color:#cc3333;
-    padding: 5px;
+    padding: 4px;
   }
 
   #subtotal{
