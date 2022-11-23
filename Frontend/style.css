@@ -389,6 +389,10 @@ header{
     width: 70%;
   }
 
+  #cart img{
+    width: 150px;
+  }
+
   /* Login & Create Account - login.html */
   .login_box{
     margin: 0;
