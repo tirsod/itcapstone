@@ -383,6 +383,11 @@ header{
 }
 
   /* Cart - cart.html */
+  #cart{
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+  }
 
   /* Login & Create Account - login.html */
   .login_box{
