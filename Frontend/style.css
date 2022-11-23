@@ -405,6 +405,7 @@ header{
   }
   #cart button:hover{
     background-color:#cc3333;
+    padding: 3px;
   }
 
   #subtotal{
