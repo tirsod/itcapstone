@@ -365,7 +365,7 @@ header{
 
 #product-details .sing-product-deets button{
   background-color: #e6f3ff;
-  font-color: #404040;
+  color: #404040;
   border-radius: 5px;
   border: none;
   padding: 10px;
@@ -373,7 +373,7 @@ header{
 
 #product-details .sing-product-deets button:hover{
   background-color: #cce6ff;
-  font-color: #000;
+  color: #000;
 }
 
 #product-details .sing-product-deets span{
@@ -403,6 +403,9 @@ header{
     height: 40px;
     font-size: 16px;
   }
+  #cart button:hover{
+    background-color:#cc3333;
+  }
 
   #subtotal{
     margin-left: auto;
@@ -411,6 +414,19 @@ header{
 
   #subtotal td{
     padding: 15px;
+  }
+
+  #subtotal button{
+    background-color: #e6f3ff;
+    color: #404040;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+  }
+
+  #subtotal button:hover{
+    background-color: #cce6ff;
+    color: #000;
   }
 
   /* Login & Create Account - login.html */
