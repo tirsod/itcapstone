@@ -408,8 +408,9 @@ header{
     padding: 4px;
     border-radius: 2px;
     border: none;
-    background-color: #909090
+    background-color: #d3d3d3;
   }
+  
   #cart button:hover{
     background-color:#cc3333;
     padding: 4px;
