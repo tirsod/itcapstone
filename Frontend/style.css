@@ -395,7 +395,9 @@ header{
 
   #cart td{
     text-align: center;
+    padding: 10px 0;
   }
+  
   /* Login & Create Account - login.html */
   .login_box{
     margin: 0;
