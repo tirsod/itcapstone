@@ -386,6 +386,7 @@ header{
   #cart{
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
   }
 
   #cart img{
