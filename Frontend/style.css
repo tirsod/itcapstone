@@ -406,10 +406,12 @@ header{
 
   #cart button{
     padding: 4px;
+    border-radius: 2px;
   }
   #cart button:hover{
     background-color:#cc3333;
     padding: 4px;
+    border-radius: 2px;
   }
 
   #subtotal{
