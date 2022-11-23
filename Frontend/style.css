@@ -407,6 +407,9 @@ header{
   #subtotal{
     margin-left: auto;
     margin-right: auto;
+  }
+
+  #subtotal td{
     padding: 15px;
   }
 
