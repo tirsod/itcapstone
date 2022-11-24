@@ -570,6 +570,7 @@ header{
   width: 30%;
   margin-left: 15px;
   display: flex;
+  overflow: hidden;
 }
 
 .profile-pic i{
@@ -581,5 +582,6 @@ header{
 
 .user-info{
   width: 70%;
+  overflow: hidden;
 }
 
