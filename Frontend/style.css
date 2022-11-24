@@ -567,10 +567,13 @@ header{
 
 /* Profile - profile.html */
 .profile-pic{
-  width: 30px;
-  font-size: 30px;
+  width: 30%;
+}
+
+.profile-pic i{
+  font-size: 50px;
   background-color: #cce6ff;
-  border-radius:30px;
+  border-radius:55px;
 }
 
 .user-info{
