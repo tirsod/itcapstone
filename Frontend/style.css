@@ -569,6 +569,7 @@ header{
 .profile-pic{
   width: 30%;
   margin-left: 15px;
+  display: flex;
 }
 
 .profile-pic i{
