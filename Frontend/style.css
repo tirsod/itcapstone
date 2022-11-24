@@ -568,9 +568,10 @@ header{
 /* Profile - profile.html */
 .profile-pic{
   width: 30%;
-  margin-left: 10%;
+  margin-left: 5%;
   display: flex;
   overflow: hidden;
+  float: left;
 }
 
 .profile-pic i{
@@ -581,8 +582,8 @@ header{
 }
 
 .user-info{
-  width: 50%;
-  margin-right: 10%;
+  width: 60%;
+  margin-right: 5%;
   overflow: hidden;
 }
 
