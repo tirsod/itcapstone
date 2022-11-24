@@ -427,10 +427,9 @@ header{
   }
 
   #checkout{
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
   }
-  
+
   #checkout button{
     background-color: #e6f3ff;
     color: #404040;
