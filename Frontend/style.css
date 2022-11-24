@@ -587,3 +587,7 @@ header{
   overflow: hidden;
 }
 
+.past-orders img{
+  width: 150px;
+}
+
