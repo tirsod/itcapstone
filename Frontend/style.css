@@ -574,7 +574,8 @@ header{
 .profile-pic i{
   font-size: 70px;
   background-color: #cce6ff;
-  border-radius:10px;
+  border-radius:35px;
+  padding: 5px;
 }
 
 .user-info{
