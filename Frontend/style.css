@@ -427,7 +427,9 @@ header{
   }
 
   #checkout{
-    justify-content: center;
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-bottom: 12px;
   }
 
   #checkout button{
