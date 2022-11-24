@@ -568,6 +568,7 @@ header{
 /* Profile - profile.html */
 .profile-pic{
   width: 30%;
+  margin-left: 15px;
 }
 
 .profile-pic i{
