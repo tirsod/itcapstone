@@ -568,7 +568,7 @@ header{
 /* Profile - profile.html */
 .profile-pic{
   width: 30%;
-  margin-left: 15px;
+  margin-left: 10%;
   display: flex;
   overflow: hidden;
 }
@@ -581,7 +581,8 @@ header{
 }
 
 .user-info{
-  width: 70%;
+  width: 50%;
+  margin-right: 10%;
   overflow: hidden;
 }
 
