@@ -567,7 +567,7 @@ header{
 
 /* Profile - profile.html */
 .profile-pic{
-  width: 100%;
+  width: 10%;
   margin-left: 5%;
   display: flex;
   overflow: hidden;
