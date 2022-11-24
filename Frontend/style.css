@@ -419,8 +419,8 @@ header{
   }
 
   .total{
-    margin-left: 62.5%;
-    margin-right: 42.5%;
+    margin-left: 65%;
+    margin-right: 45%;
   }
 
   .total td{
@@ -428,8 +428,8 @@ header{
   }
 
   .checkout{
-    margin-left: 62.5%;
-    margin-right: 42.5%;
+    margin-left: 65%;
+    margin-right: 45%;
     margin-bottom: 20px;
   }
 
@@ -438,7 +438,7 @@ header{
     color: #404040;
     border-radius: 5px;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     font-size: 16px;
     font-weight: 700;
   }
