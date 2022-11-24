@@ -418,12 +418,12 @@ header{
     border-radius: 2px;
   }
 
-  .subtotal{
+  .total{
     margin-left: 62.5%;
     margin-right: 42.5%;
   }
 
-  .subtotal td{
+  .total td{
     padding: 15px;
   }
 
