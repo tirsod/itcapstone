@@ -418,8 +418,8 @@ header{
   }
 
   #subtotal{
-    margin-left: 60%;
-    margin-right: 40%;
+    margin-left: 62.5%;
+    margin-right: 42.5%;
   }
 
   #subtotal td{
@@ -427,8 +427,8 @@ header{
   }
 
   #checkout{
-    margin-left: 60%;
-    margin-right: 40%;
+    margin-left: 62.5%;
+    margin-right: 42.5%;
     margin-bottom: 12px;
   }
 
