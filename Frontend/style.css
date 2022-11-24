@@ -566,4 +566,14 @@ header{
 }
 
 /* Profile - profile.html */
-.profile-pic
+.profile-pic{
+  width: 30%;
+  font-size: 30px;
+  background-color: #cce6ff;
+  border-radius:30px;
+}
+
+.user-info{
+  width: 70%;
+}
+
