@@ -588,8 +588,11 @@ header{
 }
 
 .past-orders{
-  width: 95%;
-  margin: 50px 20px;
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
   background-color: #cce6ff;
 }
 
