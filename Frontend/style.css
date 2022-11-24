@@ -384,6 +384,7 @@ header{
 
   /* Cart - cart.html */
   #cart{
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
