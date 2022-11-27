@@ -1,94 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
+using ItcapstoneBackend.Database;
+using ItcapstoneBackend.Domain;
+using ItcapstoneBackend.Domain.Requests;
+using ItcapstoneBackend.Domain.Responses;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace SQLiteDemo
 {
     class Program
     {
-
-        static void Main(string[] args)
+        public UserInformation()
         {
-            SQLiteConnection sqlite_conn;
-            sqlite_conn = CreateConnection();
-            InsertData(sqlite_conn);
-            ReadData(sqlite_conn);
+            var reqBody = JsonSerializer.Deserialize<UserInfo>(json.GetRawText());
+
+            List<UserInfo> credentials = GetUserInfo(reqBody.CustomerID);
+
+            return JsonSerializer.Serialize(credentials);
         }
 
-        static SQLiteConnection CreateConnection()
+        private List<UserInfo> GetUserInfo(int customerId)
         {
-
-            SQLiteConnection sqlite_conn;
-            // Create a new database connection:
-            sqlite_conn = new SQLiteConnection("Data Source=ITCapstone.db");
-           // Open the connection:
-         try
-            {
-                sqlite_conn.Open();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return sqlite_conn;
-        }
-
-        static void InsertData(SQLiteConnection conn)
-        {
-            SQLiteCommand sqlite_cmd;
-            sqlite_cmd = conn.CreateCommand();
-            conn.Open();
-            sqlite_cmd.CommandText = "INSERT INTO Categories (Col1, Col2) VALUES('Test Text ', 1); ";
-            try
-            {
-                sqlite_cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            { }
-            /*sqlite_cmd.CommandText = "INSERT INTO SampleTable (Col1, Col2) VALUES('Test1 Text1 ', 2); ";
-            try
-            {
-                sqlite_cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            { }
-            sqlite_cmd.CommandText = "INSERT INTO SampleTable (Col1, Col2) VALUES('Test2 Text2 ', 3); ";
-            try
-            {
-                sqlite_cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            { }
-
-
-            sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES('Test3 Text3 ', 3); ";
-            try
-            {
-                sqlite_cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            { }*/
-
-        }
-
-        static void ReadData(SQLiteConnection conn)
-        {
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
-            sqlite_cmd = conn.CreateCommand();
-            conn.Open();
-            sqlite_cmd.CommandText = "SELECT * FROM Categories";
-
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
-            {
-                string myreader = sqlite_datareader.GetString(0);
-                Console.WriteLine(myreader);
-            }
-            conn.Close();
+            var result = _db.Customers.Where(c => c.CustomerName == reqBody.Username && c.CustomerPassword == reqBody.Password).ToList();
+            return results;
         }
     }
+
+    class UserInfo
+    {
+        public int CustomerID { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerPassword { get; set; }
+    }
+
 }
