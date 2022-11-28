@@ -47,9 +47,11 @@
         <section>
             <h1 id="non-title-space"></h1>
         </section>
-        <section>
-            <table class="cart">
-                <tr>
+        <section >
+            <table class="cart" id="product_box">
+                
+                <!-- headers -->
+                <tr> 
                     <th></th>
                     <th>Product</th>
                     <th>Size</th>
@@ -57,7 +59,9 @@
                     <th>Quantity</th>
                     <th>Subtotal</th>
                 </tr>
-                <tr>
+
+                <!-- Product template -->
+                <tr> 
                     <td><button><i class="fa-solid fa-trash-can"></i></button></td>
                     <td>
                         <img id="product-img" src="https://user-images.githubusercontent.com/115847180/202915683-3807a24d-ffd8-4875-8ca0-26ab9078da0f.jpg" alt="Men_Tee_Binary">
@@ -70,35 +74,21 @@
                     <td><input type="number" value="1"></td>
                     <td>$20</td>
                 </tr>
-                <!-- Doubling for spacing testing-->
-                <tr>
-                    <td><button><i class="fa-solid fa-trash-can"></i></button></td>
-                    <td id="img-description">
-                        <img src="https://user-images.githubusercontent.com/115847180/202915683-3807a24d-ffd8-4875-8ca0-26ab9078da0f.jpg" alt="Men_Tee_Binary">
-                        <div class="description">
-                            <h5>Men's Binary Tee</h5>
-                        </div>
-                    </td>
-                    <td id="size">XL</td>
-                    <td id="price">$20</td>
-                    <td id="quantity"><input type="number" value="1"></td>
-                    <td id="subtotal">$20</td>
-                </tr>
+
             </table>
         </section>
         <section>
             <table class="total">
                 <tr>
                     <th>Total</th>
-                    <td id="total">$40</td>
+                    <td id="total">$0</td>
                 </tr>
             </table>
         </section>
         <section class="checkout">
             <button>Checkout</button>
-        </section>
-        <div id="product_box">
-        </div>
+        </section>>
+
         <section id="feat-product">
             <h3 id="section-header">Forgot something?</h3>
             <h5 id="section-header">Check out our most popular products!</h5>
