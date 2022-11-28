@@ -7,6 +7,10 @@
         <title>Capstone Outfitters</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/8c5cbea69b.js" crossorigin="anonymous"></script>
+        <!-- Core theme CSS (includes Bootstrap)
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">-->
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="script.js"></script>
     </head>
     <body></body>
@@ -50,19 +54,18 @@
        </section>
        <section class="past-orders">
         <h4>Your Orders:</h4>
-        <table>
+        <table id="product_box">
+            
             <tr>
                 <th>Order ID</th>
+                <th>Quantity</th>
+                <th>Size</th>
                 <th>Total</th>
                 <th>Items Preview</th>
             </tr>
-            <tr>
-                <td>123456</td>
-                <td>$50</td>
-                <td><img src="https://user-images.githubusercontent.com/115847180/202915683-3807a24d-ffd8-4875-8ca0-26ab9078da0f.jpg" alt="Men_Tee_Binary"><img src="https://user-images.githubusercontent.com/115847180/202915683-3807a24d-ffd8-4875-8ca0-26ab9078da0f.jpg" alt="Men_Tee_Binary"></td>
-            </tr>
+
         </table>
        </section>
-       <script src="index.js"></script>
+       <script src="profile.js"></script>
     </body>
 </html>

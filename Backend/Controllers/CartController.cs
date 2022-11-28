@@ -27,19 +27,29 @@ namespace ItcapstoneBackend.Controllers
 
 
         [HttpGet("checkout")]
-        public bool CheckoutCart(int id)
+        public string CheckoutCart(int id)
         {
 
             var i = _db.CartItems.Where(c => c.CustomerID == id).ToList();
             
             foreach (var item in i)
             {
-                if (item.Status == "inCart") item.Status = "ordered";
+                if (item.Status == "inCart")
+                {
+                    item.Status = "ordered";
+
+                    Random r = new Random();
+                    int numb = r.Next(0, 999999999);
+                    var bytes = System.Text.Encoding.UTF8.GetBytes(numb.ToString());
+                    item.OrderID = System.Convert.ToBase64String(bytes);
+
+                    _db.SaveChanges();
+
+                    return item.OrderID;
+                }
             }
 
-            _db.SaveChanges();
-
-            return true;
+            return "false";
         }
 
         [HttpGet("remove")]
@@ -82,21 +92,24 @@ namespace ItcapstoneBackend.Controllers
         {
             var results = new List<CartItemResponse>();
 
-            var carts = _db.CartItems.Where(c => c.CustomerID == customerId && c.Status == "inCart").ToList();
-            foreach(var cart in carts)
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
             {
-                var cartItem = new CartItemResponse();
+                var carts = db.CartItems.Where(c => c.CustomerID == customerId).ToList();
+                foreach (var cart in carts)
+                {
+                    var cartItem = new CartItemResponse();
 
-                cartItem.CustomerID = cart.CustomerID;
-                cartItem.CartItemID = cart.CartItemID;
-                cartItem.ProductID = cart.ProductID;
-                cartItem.Size = cart.Size;
-                cartItem.Quantity = cart.Quantity;
-                cartItem.Status = cart.Status;
+                    cartItem.CustomerID = cart.CustomerID;
+                    cartItem.CartItemID = cart.CartItemID;
+                    cartItem.ProductID = cart.ProductID;
+                    cartItem.Size = cart.Size;
+                    cartItem.Quantity = cart.Quantity;
+                    cartItem.Status = cart.Status;
 
-                var product = new ProductResponse();
+                    var product = new ProductResponse();
 
-                    var reference = _db.Products.Where(p => p.ProductID == cartItem.ProductID).DefaultIfEmpty().First();
+                    var reference = db.Products.Where(p => p.ProductID == cartItem.ProductID).DefaultIfEmpty().First();
 
                     product.Title = reference.Title;
                     product.Price = reference.Price;
@@ -104,13 +117,16 @@ namespace ItcapstoneBackend.Controllers
                     product.Status = true;
                     product.Image = reference.Image;
 
-                cartItem.Product = product;
+                    cartItem.Product = product;
 
-                results.Add(cartItem);
+                    results.Add(cartItem);
+                }
+
+
+                return results;
             }
 
-
-            return results;
+            
         }
     }
 }
