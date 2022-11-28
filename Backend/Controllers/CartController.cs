@@ -25,6 +25,45 @@ namespace ItcapstoneBackend.Controllers
             _db = db;
         }
 
+
+        [HttpGet("checkout")]
+        public bool CheckoutCart(int id)
+        {
+
+            var i = _db.CartItems.Where(c => c.CustomerID == id).ToList();
+            
+            foreach (var item in i)
+            {
+                if (item.Status == "inCart") item.Status = "ordered";
+            }
+
+            _db.SaveChanges();
+
+            return true;
+        }
+
+        [HttpGet("remove")]
+        public bool RemoveCartItem(int id)
+        {
+
+            var i = _db.CartItems.Where(c => c.CartItemID == id).DefaultIfEmpty().First();
+            _db.CartItems.Remove(i);
+            _db.SaveChanges();
+
+            return false;
+        }
+
+        [HttpGet("quantity")]
+        public bool ChangeCartQuantity(int id, int quantity)
+        {
+
+            var i = _db.CartItems.Where(c => c.CartItemID == id).DefaultIfEmpty().First();
+            i.Quantity = quantity;
+            _db.SaveChanges();
+
+            return false;
+        }
+
         [HttpPost]
         public string GetCartItems([FromBody] JsonElement json)
         {
@@ -43,7 +82,7 @@ namespace ItcapstoneBackend.Controllers
         {
             var results = new List<CartItemResponse>();
 
-            var carts = _db.CartItems.Where(c => c.CustomerID == customerId).ToList();
+            var carts = _db.CartItems.Where(c => c.CustomerID == customerId && c.Status == "inCart").ToList();
             foreach(var cart in carts)
             {
                 var cartItem = new CartItemResponse();

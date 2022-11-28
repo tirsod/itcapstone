@@ -1,15 +1,14 @@
-
 var itemList = new Array();
+var _userId = getCookie("itcapstone");
+
+function getBaseUrl(endpoint){
+    //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
+    return 'https://localhost:7242/'+endpoint;
+}
 
   $(document).ready(function(){
 
     var urlParams = new URLSearchParams(window.location.search);
-    var _userId = getCookie("itcapstone");
-
-    function getBaseUrl(endpoint){
-        //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
-        return 'https://localhost:7242/'+endpoint;
-    }
         
     axios.post(getBaseUrl('Cart'), {
         customer: _userId
@@ -56,15 +55,56 @@ var itemList = new Array();
                     calculateTotal();
             }
         });
+
+    
+    $("#checkoutButton").click( function(){
+        checkout();
+    });
 });
 
 function removeCartItem(cartItemId){
-    console.log("remove: "+cartItemId);
     $(`#item${cartItemId}`).remove();
+
+    axios.get(getBaseUrl('Cart/remove'), {
+        params: {
+            id: cartItemId
+          }
+    })
+    .then(function (response) {
+
+    });
+
     calculateTotal();
 }
     
 function changeQuantity(cartItemId){
+
+    var q = $(`#quantity${cartItemId}`).val();
+
+    axios.get(getBaseUrl('Cart/quantity'), {
+        params: {
+            id: cartItemId,
+            quantity: q
+          }
+    })
+    .then(function (response) {
+
+    });
+
+    calculateTotal();
+}
+
+function checkout(){
+
+    axios.get(getBaseUrl('Cart/checkout'), {
+        params: {
+            id: _userId
+          }
+    })
+    .then(function (response) {
+        window.location.href = "confirmation.html";
+    });
+
     calculateTotal();
 }
 
