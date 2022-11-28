@@ -30,7 +30,7 @@ namespace ItcapstoneBackend.Controllers
         {
             var reqBody = JsonSerializer.Deserialize<CartRequest>(json.GetRawText());
 
-            List<CartItem> items = GetItemsInCart(reqBody.CustomerID);
+            List<CartItem> items = GetItemsInCart(Int32.Parse(reqBody.CustomerID));
 
             return JsonSerializer.Serialize(items);
         }

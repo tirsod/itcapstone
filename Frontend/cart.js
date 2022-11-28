@@ -11,7 +11,7 @@
 
     console.log("customer "+_userId);
     axios.post(getBaseUrl('Cart'), {
-        customer: 1
+        customer: _userId
     })
         .then(function (response) {
 
