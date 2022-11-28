@@ -77,7 +77,7 @@ namespace ItcapstoneBackend.Controllers
         [HttpPost]
         public string GetCartItems([FromBody] JsonElement json)
         {
-
+            
             var reqBody = JsonSerializer.Deserialize<CartRequest>(json.GetRawText());
             var response = new CartResponse();
             var items = new List<CartItemResponse>();

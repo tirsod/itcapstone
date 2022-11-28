@@ -1,11 +1,5 @@
 var itemList = new Array();
 var _userId = getCookie("itcapstone");
-
-function getBaseUrl(endpoint){
-    //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
-    return 'https://localhost:7242/'+endpoint;
-}
-
   $(document).ready(function(){
 
     var urlParams = new URLSearchParams(window.location.search);

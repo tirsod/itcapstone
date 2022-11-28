@@ -26,6 +26,20 @@ namespace ItcapstoneBackend.Controllers
         }
 
 
+        [HttpGet("all")]
+        public string GetAll()
+        {
+            var res = new ProfileListResponse();
+
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                res.Customers = db.Customers.Where(c => c.CustomerID > 0).ToList();
+            }
+
+            return JsonSerializer.Serialize(res);
+        }
+
         [HttpGet]
         public string ProfileInfo(int id)
         {
