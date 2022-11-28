@@ -28,16 +28,49 @@ namespace ItcapstoneBackend.Controllers
         [HttpPost]
         public string GetCartItems([FromBody] JsonElement json)
         {
+
             var reqBody = JsonSerializer.Deserialize<CartRequest>(json.GetRawText());
+            var response = new CartResponse();
+            var items = new List<CartItemResponse>();
 
-            List<CartItem> items = GetItemsInCart(Int32.Parse(reqBody.CustomerID));
+            items = GetItemsInCart(Int32.Parse(reqBody.CustomerID));
 
-            return JsonSerializer.Serialize(items);
+            response.CartItems = items;
+            return JsonSerializer.Serialize(response);
         }
 
-        private List<CartItem> GetItemsInCart(int customerId)
+        private List<CartItemResponse> GetItemsInCart(int customerId)
         {
-            var results = _db.CartItems.Where(c => c.CustomerID == customerId).ToList();
+            var results = new List<CartItemResponse>();
+
+            var carts = _db.CartItems.Where(c => c.CustomerID == customerId).ToList();
+            foreach(var cart in carts)
+            {
+                var cartItem = new CartItemResponse();
+
+                cartItem.CustomerID = cart.CustomerID;
+                cartItem.CartItemID = cart.CartItemID;
+                cartItem.ProductID = cart.ProductID;
+                cartItem.Size = cart.Size;
+                cartItem.Quantity = cart.Quantity;
+                cartItem.Status = cart.Status;
+
+                var product = new ProductResponse();
+
+                    var reference = _db.Products.Where(p => p.ProductID == cartItem.ProductID).DefaultIfEmpty().First();
+
+                    product.Title = reference.Title;
+                    product.Price = reference.Price;
+                    product.Description = reference.Description;
+                    product.Status = true;
+                    product.Image = reference.Image;
+
+                cartItem.Product = product;
+
+                results.Add(cartItem);
+            }
+
+
             return results;
         }
     }

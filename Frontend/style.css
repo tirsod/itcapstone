@@ -390,6 +390,10 @@ header{
     border-collapse: collapse;
   }
 
+  .cart th{
+    width: 100px;
+  }
+
   .cart img{
     width: 150px;
   }
