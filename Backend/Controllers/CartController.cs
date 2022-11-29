@@ -74,6 +74,18 @@ namespace ItcapstoneBackend.Controllers
             return false;
         }
 
+        [HttpGet("id")]
+        public string GetCartItemsById(int id)
+        {
+            var response = new CartResponse();
+            var items = new List<CartItemResponse>();
+
+            items = GetItemsInCart(id);
+
+            response.CartItems = items;
+            return JsonSerializer.Serialize(response);
+        }
+
         [HttpPost]
         public string GetCartItems([FromBody] JsonElement json)
         {

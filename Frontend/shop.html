@@ -7,334 +7,67 @@
         <title>Capstone Outfitters</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/8c5cbea69b.js" crossorigin="anonymous"></script>
+        <!-- Core theme CSS (includes Bootstrap)
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">-->
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="script.js"></script>
     </head>
-    <body></body>
+    <body>
         <header>
-         <div class="navbar">
-            <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
-         </div> 
-         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html" class="active"> Shop</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="login.html">Login/Create Account</a></li>
-                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
-            </ul>
-         </nav>
-         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <ul class="mobile-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="shop.html"> Shop</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="login.html">Login/Create Account</a></li>
-                <li><a href="profile.html"><i class="fa-regular fa-user"><label>Profile</label></i></a></li>
-            </ul>
-        </div>
-       </header>
+            <div class="navbar">
+               <img src="https://user-images.githubusercontent.com/115847180/200141705-bf7b645e-5c32-4c9d-8ba5-cdff947dd23b.jpg" alt="Navbar_logo" height="50" width="250">
+            </div> 
+            <nav>
+               <ul>
+                   <li><a href="index.html" class="active">Home</a></li>
+                   <li><a href="shop.html"> Shop</a></li>
+                   <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                   <li><a href="login.html" id="login_button">Login/Create Account</a></li>
+                   <li><a href="login.html" id="logout_button">Logout</a></li>
+                   <li><a href="profile.html"><i class="fa-regular fa-user"><label id="profile_button">Profile</label></i></a></li>
+               </ul>
+            </nav>
+            <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+               <div class="bar1"></div>
+               <div class="bar2"></div>
+               <div class="bar3"></div>
+               <ul class="mobile-menu">
+                   <li><a href="index.html" class="active">Home</a></li>
+                   <li><a href="shop.html"> Shop</a></li>
+                   <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                   <li><a href="login.html" id="login_button">Login/Create Account</a></li>
+                   <li><a href="login.html" id="logout_button">Logout</a></li>
+                   <li><a href="profile.html"><i class="fa-regular fa-user"><label id="profile_button">Profile</label></i></a></li>
+               </ul>
+           </div>
+          </header>
        <section id="title">
         <h2>Shop</h2>
         <h4>Now happily offering extended sizes from XS to 3XL</h4>
    </section>
    <section id="page-sort">
-    <select onchange="la(this.value)">
-        <option class="all" value="shop.html" disabled selected>All Products</option>
-        <option class="gender" value="men.html">Men</option>
-        <option class="sub-section" value="menshirt.html">Men's Shirts</option>
-        <option class="sub-section" value="mensweater.html">Men's Sweaters</option>
-        <option class="sub-section" value="menshort.html">Men's Shorts</option>
-        <option class="sub-section" value="menpant.html">Men's Pants</option>
-        <option class="gender" value="women.html">Women</option>
-        <option class="sub-section" value="womenshirt.html">Women's Shirts</option>
-        <option class="sub-section" value="womensweater.html">Women's Sweaters</option>
-        <option class="sub-section" value="womenshort.html">Women's Shorts</option>
-        <option class="sub-section" value="womenpant.html">Women's Pants</option>
+    <select id="gender-select">
+        <option class="all" value="all" selected>All Products</option>
+        <option class="gender" value="Men">Men</option>
+        <option class="sub-section" value="0">Men's Shirts</option>
+        <option class="sub-section" value="2">Men's Sweaters</option>
+        <option class="sub-section" value="1">Men's Shorts</option>
+        <option class="sub-section" value="3">Men's Pants</option>
+        <option class="gender" value="Women">Women</option>
+        <option class="sub-section" value="4">Women's Shirts</option>
+        <option class="sub-section" value="6">Women's Sweaters</option>
+        <option class="sub-section" value="5">Women's Shorts</option>
+        <option class="sub-section" value="7">Women's Pants</option>
     </select>
    </section>
    <section id="shop">
-        <div class="product-box">
+        <div class="product-box" id="product_box">
             <div class="product" onclick="window.location.href='MBarcodeT.html';">
                 <img src="https://user-images.githubusercontent.com/115847180/202916343-e644746a-8b57-4d62-8c52-e5bbdf6d7076.jpg" alt="Men_Tee_Barcode">
                 <div class="description" onclick="window.location.href='MBarcodeT.html';">
                     <h5>Men's Barcode Tee</h5>
                     <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MBinaryT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916348-4123b2b1-ad8b-4900-90d6-17c43ab32f48.jpg" alt="Men_Tee_Binary">
-                <div class="description" onclick="window.location.href='MBinaryT.html';">
-                    <h5>Men's Binary Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MCapstoneT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916361-d5692a90-f706-4c50-9e8b-311c9d90a132.jpg" alt="Men_Tee_Capstone">
-                <div class="description" onclick="window.location.href='MCapstoneT.html';">
-                    <h5>Men's Capstone Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MLogoAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916364-5605f7fe-3b40-4076-8cbb-31be759a6789.jpg" alt="Men_Tee_FullLogo">
-                <div class="description" onclick="window.location.href='MLogoT.html';">
-                    <h5>Men's Full Logo Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MBarcodeAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916296-1cfc89ae-1b7b-4edc-9756-e0d60967da6f.jpg" alt="Men_Active_Barcode">
-                <div class="description">
-                    <h5>Men's Barcode Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MBinaryAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916314-4fdf3f6f-492e-460f-9fba-af27141a0364.jpg" alt="Men_Active_Binary">
-                <div class="description">
-                    <h5>Men's Binary Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MCapstoneAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916330-3fdfc9b0-51ed-4724-b551-0ebe484db17f.jpg" alt="Men_Active_Capstone">
-                <div class="description">
-                    <h5>Men's Capstone Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MLogoAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916326-d0ff7c62-ee08-475f-aad5-4c45dee0e26a.jpg" alt="Men_Active_FullLogo">
-                <div class="description">
-                    <h5>Men's Full Logo Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://user-images.githubusercontent.com/115847180/202916505-df544806-4a66-4896-80c1-f2ee9c71933d.jpg" alt="Women_Tee_Barcode">
-                <div class="description" onclick="window.location.href='WBarcodeT.html';">
-                    <h5>Women's Barcode Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://user-images.githubusercontent.com/115847180/202916506-e979402c-a351-446a-b240-3adebd9d3bd6.jpg" alt="Women_Tee_Binary">
-                <div class="description" onclick="window.location.href='WBinaryT.html';">
-                    <h5>Women's Binary Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WCapstoneT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916516-6d5165c8-c8ce-425f-a513-e8bf826243c9.jpg" alt="Women_Tee_Capstone">
-                <div class="description">
-                    <h5>Women's Capstone Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WLogoT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916518-307ca912-c4e1-4c9b-855d-363008e714d5.jpg" alt="Women_Tee_FullLogo">
-                <div class="description">
-                    <h5>Women's Full Logo Tee</h5>
-                    <h4>$20</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WBarcodeAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916488-b9d54a8f-5027-4f6a-83da-647066cba1b3.jpg" alt="Women_Active_Barcode">
-                <div class="description">
-                    <h5>Women's Barcode Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WBinaryAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916490-f638659e-2042-4a52-98af-8b01e8a8e384.jpg" alt="Women_Active_Binary">
-                <div class="description">
-                    <h5>Women's Binary Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WCapstoneAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916494-860ac580-a80a-4b2b-b138-27f13844cc5c.jpg" alt="Women_Active_Capstone">
-                <div class="description">
-                    <h5>Women's Capstone Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WLogoAT.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916500-4eeab0b0-903a-4bb3-a023-27f886970507.jpg" alt="Women_Active_FullLogo">
-                <div class="description">
-                    <h5>Women's Full Logo Active Tee</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MBarcodeS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916377-0c9fc70e-b3ed-4f7d-ab38-365c457f3c98.jpg" alt="Men_Sweater_Barcode">
-                <div class="description">
-                    <h5>Men's Barcode Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MBinaryS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916382-abe3c7f8-21d3-45b9-b86d-09de5188dccb.jpg" alt="Men_Sweater_Binary">
-                <div class="description">
-                    <h5>Men's Binary Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MCapstoneS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916387-9fca6283-2bb3-4e8a-9f77-1ff0a97a5050.jpg" alt="Men_Sweater_Capstone"> 
-                <div class="description">
-                    <h5>Men's Capstone Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MLogoS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916392-d3519f1b-9c5e-4496-bebc-17f1586cc452.jpg" alt="Men_Sweater_FullLogo">
-                <div class="description">
-                    <h5>Men's Full Logo Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://user-images.githubusercontent.com/115847180/202916402-5579163a-5d43-4340-bf18-d3ca2d57e352.jpg" alt="Men_Hoodie_Barcode">
-                <div class="description" onclick="window.location.href='MBarcodeH.html';">
-                    <h5>Men's Barcode Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MBinaryH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916404-3956703f-e4a1-4880-b935-50377712e71a.jpg" alt="Men_Hoodie_Binary">
-                <div class="description">
-                    <h5>Men's Binary Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MCapstoneH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916409-6b4e38ad-ecce-4edf-9c4b-f2d35b46dbf8.jpg" alt="Men_Hoodie_Capstone">
-                <div class="description">
-                    <h5>Men's Capstone Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MLogoH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916413-757f2fe7-1683-45d0-b71e-ebeb30017cfc.jpg" alt="Men_Hoodie_FullLogo">
-                <div class="description">
-                    <h5>Men's Full Logo Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WBarcodeS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916524-c136a067-6ae9-449f-ad4d-52dea9825239.jpg" alt="Women_Sweater_Barcode">
-                <div class="description">
-                    <h5>Women's Barcode Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WBinaryS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916529-a14bcc5f-4d86-4437-a8ba-418fb382696a.jpg" alt="Women_Sweater_Binary">
-                <div class="description">
-                    <h5>Women's Binary Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WCapstoneS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916539-3d69d46c-701a-4eec-8aa7-01f72437402e.jpg" alt="Women_Sweater_Capstone">
-                <div class="description">
-                    <h5>Women's Capstone Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WLogoS.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916545-b1b40208-6b95-4350-a437-5c3f628123c7.jpg" alt="Women_Sweater_FullLogo">
-                <div class="description">
-                    <h5>Women's Full Logo Sweater</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WBarcodeH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916551-f79d2cee-b191-4196-a65b-1f54178e7944.jpg" alt="Women_Hoodie_Barcode">
-                <div class="description">
-                    <h5>Women's Barcode Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WBinaryH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916555-5dade5a6-072d-444f-9607-a5cf2bcb5a44.jpg" alt="Women_Hoodie_Binary">
-                <div class="description">
-                    <h5>Women's Binary Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WCapstoneH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916559-e619108f-7e60-4e78-ab1f-a948102ffa80.jpg" alt="Women_Hoodie_Capstone">
-                <div class="description">
-                    <h5>Women's Capstone Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WLogoH.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916562-f5cd94c2-8dbd-4e90-a028-9d199efd63ae.jpg" alt="Women_Hoodie_FullLogo">
-                <div class="description">
-                    <h5>Women's Full Logo Hoodie</h5>
-                    <h4>$40</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MShort1.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916447-7442e11d-b46b-4684-89d2-507e67116b5a.jpg" alt="Men_Short_1">
-                <div class="description">
-                    <h5>Men's Athletic Shorts</h5>
-                    <h4>$30</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MShort2.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916450-fca62cf3-8a18-4b69-b1e7-a9079034a77b.jpg" alt="Men_Short_2">
-                <div class="description">
-                    <h5>Men's Lounge Shorts</h5>
-                    <h4>$30</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MPant1.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916452-5b4a6151-1866-4372-bc6b-33330571d23e.jpg" alt="Men_Pant">
-                <div class="description">
-                    <h5>Men's Sweatpants</h5>
-                    <h4>$25</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='MPant2.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916483-9120b84a-5d97-4fff-a9d0-33a1db96e728.jpg" alt="Work_Pant">
-                <div class="description">
-                    <h5>Men's Work Pants</h5>
-                    <h4>$35</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WShort1.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916581-35e99be8-531f-4e45-a18a-fcbb244aa217.jpg" alt="Women_Short_1">
-                <div class="description">
-                    <h5>Women's Athletic Shorts</h5>
-                    <h4>$30</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WShort2.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916587-14a68edf-dab1-484c-9a87-039e065f6bea.jpg" alt="Women_Short_2">
-                <div class="description">
-                    <h5>Women's Lounge Shorts</h5>
-                    <h4>$30</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WPant1.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916593-d41d8ca8-b7c4-4bd0-aac4-9fe1874b2886.jpg" alt="Women_Pant">
-                <div class="description">
-                    <h5>Women's Sweatpants</h5>
-                    <h4>$30</h4>
-                </div>
-            </div>
-            <div class="product" onclick="window.location.href='WPant2.html';">
-                <img src="https://user-images.githubusercontent.com/115847180/202916483-9120b84a-5d97-4fff-a9d0-33a1db96e728.jpg" alt="Work_Pant">
-                <div class="description">
-                    <h5>Women's Work Pants</h5>
-                    <h4>$30</h4>
                 </div>
             </div>
         </div>
@@ -344,6 +77,6 @@
         window.location=src;
     }
    </script>
-       <script src="index.js"></script>
+       <script src="shop.js"></script>
     </body>
 </html>

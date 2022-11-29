@@ -3,7 +3,12 @@ var _userId = getCookie("itcapstone");
   $(document).ready(function(){
 
     var urlParams = new URLSearchParams(window.location.search);
-        
+    
+    if(_userId <= 0)
+    {
+        window.location = "login.html";
+    }
+
     axios.post(getBaseUrl('Cart'), {
         customer: _userId
     })

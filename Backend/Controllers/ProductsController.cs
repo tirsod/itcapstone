@@ -48,6 +48,49 @@ namespace ItcapstoneBackend.Controllers
             return JsonSerializer.Serialize(response);
         }
 
+
+        [HttpGet("category")]
+        public string GetByCategory(string category)
+        {
+
+            List<Product> responses = new List<Product>();
+
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                int cat;
+                if (Int32.TryParse(category, out cat)) // Is a number
+                {
+                    responses = db.Products.Where(p => p.CategoryID == cat).ToList();
+                    return JsonSerializer.Serialize(responses);
+                    
+                }
+                else if (category == "Women" || category == "Men") // Is women or men
+                {
+                    if (category == "Men")
+                    {
+                        responses = db.Products.Where(p => p.CategoryID < 4).ToList();
+                    }
+                    else
+                    {
+                        responses = db.Products.Where(p => p.CategoryID >= 4).ToList();
+                    }
+                    return JsonSerializer.Serialize(responses);
+                }
+                else if (category == "all")
+                {
+                    responses = db.Products.Where(p => p.ProductID > 0).ToList();
+                }
+                else // Neither
+                {
+                    return JsonSerializer.Serialize(responses);
+                }
+            }
+
+            return JsonSerializer.Serialize(responses);
+
+        }
+
         [HttpGet]
         public string GetAll(string featured)
         {
@@ -58,6 +101,11 @@ namespace ItcapstoneBackend.Controllers
             if (featured == "1")
             {
                 responses = GetFeatured();
+                return JsonSerializer.Serialize(responses);
+            }
+            else
+            {
+                responses = GetAllProducts();
                 return JsonSerializer.Serialize(responses);
             }
 
@@ -90,6 +138,17 @@ namespace ItcapstoneBackend.Controllers
             using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
             {
                 var results = db.Products.Where(p => p.Featured == 1).ToList();
+                return results;
+            }
+        }
+
+        private List<Product> GetAllProducts()
+        {
+
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                var results = db.Products.Where(p => p.Featured > -1).ToList();
                 return results;
             }
         }
