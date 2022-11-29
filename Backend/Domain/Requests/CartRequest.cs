@@ -5,7 +5,7 @@ namespace ItcapstoneBackend.Domain.Requests
     public class CartRequest
     {
         [JsonPropertyName("customer")]
-        public int CustomerID { get; set; }
+        public string CustomerID { get; set; }
 
         [JsonPropertyName("cartid")]
         public string? CartItemsID { get; set; }

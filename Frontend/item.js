@@ -6,11 +6,6 @@
     var item;
     console.log(_id);
 
-    function getBaseUrl(endpoint){
-        //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
-        return 'https://localhost:7242/'+endpoint;
-    }
-
     axios.get(getBaseUrl('Products/id'), {
         params: {
             id: _id

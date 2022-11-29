@@ -1,9 +1,22 @@
 var itemList = new Array();
 var _userId = getCookie("itcapstone");
+
   $(document).ready(function(){
 
     var urlParams = new URLSearchParams(window.location.search);
-        
+    
+    if(_userId > 0)
+    {
+    axios.get(getBaseUrl('Profile'), {
+        params: {
+            id: _userId
+          }
+    })
+    .then(function (response) {
+        $("#username").html(response.data.Name);
+        $("#email").html(response.data.Email);
+    });
+
     axios.post(getBaseUrl('Cart'), {
         customer: _userId
     })
@@ -11,8 +24,9 @@ var _userId = getCookie("itcapstone");
 
             for (a = 0; a < response.data.CartItems.length; a++){
                 var cart = response.data.CartItems[a];
-            if (cart.Status == "inCart")
-            {
+                console.log(cart.Product.Price);
+                if(cart.Status == "ordered"){
+
                 var itemSize = cart.Size.toUpperCase();
                 var itemQuantity = cart.Quantity;
 
@@ -20,42 +34,26 @@ var _userId = getCookie("itcapstone");
                 var id = cart.CartItemID;
                 console.log("id set to: "+id);
 
+                var orderTotal = itemQuantity*cart.Product.Price;
+
                 itemList.push(id);
 
                     $("#product_box").append(`
-
-                    <tr id="item${id}"> 
-                    <td><button id="trash${id}" onClick="removeCartItem(${id})" ><i class="fa-solid fa-trash-can"></i></button></td>
-                    <td>
-                        <img id="product-img" src="img/${i.Image}.jpg" alt="${i.Title}" onclick="window.location.href='item.html?id=${i.ProductID}'>
-                        <div class="description">
-                            <a href='item.html?id=${i.ProductID}'> <h5>${i.Title}</h5> </a>
-                        </div>
-                    </td>
-                    <td>${itemSize}</td>
-                    <td id="price${id}"> $${i.Price}</td>
-                    <td><input type="number" id="quantity${id}" min="1" max="99" value="${itemQuantity}" onChange="changeQuantity(${id})"></td>
-                    <td id="subtotal${id}">$${i.Price * itemQuantity}</td>
+                     <tr>
+                        <td>${id}</td>
+                        <td>${itemQuantity}</td>
+                        <td>${itemSize}</td>
+                        <td>$${orderTotal}</td>
+                        <td><img src="img/${i.Image}.jpg" alt="Men_Tee_Binary"></td>
                     </tr>
-
-                    <div class="product" onclick="window.location.href='item.html?id=${i.ProductID}';">
-                        <img src="img/${i.Image}.jpg" width = 50px height = 50px alt="${i.Title}">
-                        <div class="description" onclick="window.location.href='item.html?id=${i.ProductID}';">
-                            <h5>${i.Title}</h5>
-                            <h4>$${i.Price}</h4>
-                        </div>
-                    </div>    
                     `);
                 }
-
-                    calculateTotal();
             }
         });
-
-    
-    $("#checkoutButton").click( function(){
-        checkout();
-    });
+    }
+    else{
+        window.location = "login.html";
+    }
 });
 
 function removeCartItem(cartItemId){
@@ -98,8 +96,7 @@ function checkout(){
           }
     })
     .then(function (response) {
-        console.log(response);
-        window.location.href = `confirmation.html?confirmation=${response.data}`;
+        window.location.href = "confirmation.html";
     });
 
     calculateTotal();

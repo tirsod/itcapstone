@@ -25,20 +25,108 @@ namespace ItcapstoneBackend.Controllers
             _db = db;
         }
 
+
+        [HttpGet("checkout")]
+        public string CheckoutCart(int id)
+        {
+
+            var i = _db.CartItems.Where(c => c.CustomerID == id).ToList();
+            
+            foreach (var item in i)
+            {
+                if (item.Status == "inCart")
+                {
+                    item.Status = "ordered";
+
+                    Random r = new Random();
+                    int numb = r.Next(0, 999999999);
+                    var bytes = System.Text.Encoding.UTF8.GetBytes(numb.ToString());
+                    item.OrderID = System.Convert.ToBase64String(bytes);
+
+                    _db.SaveChanges();
+
+                    return item.OrderID;
+                }
+            }
+
+            return "false";
+        }
+
+        [HttpGet("remove")]
+        public bool RemoveCartItem(int id)
+        {
+
+            var i = _db.CartItems.Where(c => c.CartItemID == id).DefaultIfEmpty().First();
+            _db.CartItems.Remove(i);
+            _db.SaveChanges();
+
+            return false;
+        }
+
+        [HttpGet("quantity")]
+        public bool ChangeCartQuantity(int id, int quantity)
+        {
+
+            var i = _db.CartItems.Where(c => c.CartItemID == id).DefaultIfEmpty().First();
+            i.Quantity = quantity;
+            _db.SaveChanges();
+
+            return false;
+        }
+
         [HttpPost]
         public string GetCartItems([FromBody] JsonElement json)
         {
+            
             var reqBody = JsonSerializer.Deserialize<CartRequest>(json.GetRawText());
+            var response = new CartResponse();
+            var items = new List<CartItemResponse>();
 
-            List<CartItem> items = GetItemsInCart(reqBody.CustomerID);
+            items = GetItemsInCart(Int32.Parse(reqBody.CustomerID));
 
-            return JsonSerializer.Serialize(items);
+            response.CartItems = items;
+            return JsonSerializer.Serialize(response);
         }
 
-        private List<CartItem> GetItemsInCart(int customerId)
+        private List<CartItemResponse> GetItemsInCart(int customerId)
         {
-            var results = _db.CartItems.Where(c => c.CustomerID == customerId).ToList();
-            return results;
+            var results = new List<CartItemResponse>();
+
+            var dbPath = "Database/Database.db";
+            using (AppDbContext db = new AppDbContext($"Data Source={dbPath}"))
+            {
+                var carts = db.CartItems.Where(c => c.CustomerID == customerId).ToList();
+                foreach (var cart in carts)
+                {
+                    var cartItem = new CartItemResponse();
+
+                    cartItem.CustomerID = cart.CustomerID;
+                    cartItem.CartItemID = cart.CartItemID;
+                    cartItem.ProductID = cart.ProductID;
+                    cartItem.Size = cart.Size;
+                    cartItem.Quantity = cart.Quantity;
+                    cartItem.Status = cart.Status;
+
+                    var product = new ProductResponse();
+
+                    var reference = db.Products.Where(p => p.ProductID == cartItem.ProductID).DefaultIfEmpty().First();
+
+                    product.Title = reference.Title;
+                    product.Price = reference.Price;
+                    product.Description = reference.Description;
+                    product.Status = true;
+                    product.Image = reference.Image;
+
+                    cartItem.Product = product;
+
+                    results.Add(cartItem);
+                }
+
+
+                return results;
+            }
+
+            
         }
     }
 }

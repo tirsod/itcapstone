@@ -1,4 +1,4 @@
-  
+
   $(document).ready(function(){
 
     axios.get(getBaseUrl('Products'), {
