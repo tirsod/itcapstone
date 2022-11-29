@@ -58,7 +58,7 @@ namespace ItcapstoneBackend.Controllers
                     response.Code = "registered";
                     response.Status = true;
 
-                    _db.Customers.Add( new Domain.Customer {CustomerName = reqBody.Username, CustomerPassword = reqBody.Password, CustomerAddress = "N/A" } ); //FIXME: Add email field
+                    _db.Customers.Add( new Domain.Customer {CustomerName = reqBody.Username, CustomerPassword = reqBody.Password, CustomerAddress = "N/A", Email = reqBody.Email } ); //FIXME: Add email field
                     _db.SaveChanges();
                 }
             }
