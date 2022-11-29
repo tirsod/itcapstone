@@ -73,8 +73,8 @@ window.addEventListener( "pageshow", function ( event ) {
 // Old Script.js
 
 function getBaseUrl(endpoint){
-    //return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
-    return 'https://localhost:7242/'+endpoint;
+    return 'https://capstoneoutfitters.azurewebsites.net/'+endpoint;
+    //return 'https://localhost:7242/'+endpoint;
 }
 
   $(document).ready(function(){
