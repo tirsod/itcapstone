@@ -2,86 +2,114 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using ItcapstoneBackend.Database;
-using ItcapstoneBackend.Domain;
-using ItcapstoneBackend.Domain.Requests;
-using ItcapstoneBackend.Domain.Responses;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
+using System.Net;
+using System.Security.Principal;
 
 namespace SQLiteDemo
 {
+
     class Program
     {
-        public static void main(string[] args)
+        public static void Main(string[] args)
         {
-            console.writeline("What would you like to do");
-            console.writeline("1-Show all customers and there login credentials");
-            console.writeline("2-Show the cart history for a specific user");
 
-            int selection = console.readline();
+            Console.WriteLine("What would you like to do");
+            Console.WriteLine("1-Show all customers and there login credentials");
+            Console.WriteLine("2-Show the cart history for a specific user");
+
+            int selection = Convert.ToInt32(Console.ReadLine());
 
             switch (selection)
-            { 
+            {
                 case 1:
-                    GetUserInfo();
+                    UserInformation();
                     break;
                 case 2:
-                    GetUserCart();
+                    Console.Write("What is the user's ID: ");
+                    int intTemp = Convert.ToInt32(Console.ReadLine());
+                    UserCart(intTemp);
                     break;
                 default:
-                    console.writeline("Please try again");
+                    Console.WriteLine("Please try again");
+                    break;
             }
         }
 
-        public string UserInformation()
+        public static void UserInformation()
         {
-            var reqBody = JsonSerializer.Deserialize<UserInfo>(json.GetRawText());
+            int i = 1;
 
-            List<UserInfo> credentials = GetUserInfo(reqBody.CustomerID);
-
-            return JsonSerializer.Serialize(credentials);
+            using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+            {
+                client.BaseAddress = new Uri("https://capstoneoutfitters.azurewebsites.net/");
+                HttpResponseMessage response = client.GetAsync("profile/all").Result;
+                response.EnsureSuccessStatusCode();
+                string result = response.Content.ReadAsStringAsync().Result;
+                CustomerList request = JsonSerializer.Deserialize<CustomerList>(result);
+                foreach (var item in request.Customers)
+                {
+                    Console.WriteLine(i + " " + item.CustomerName + " " + item.CustomerPassword);
+                    i++;
+                }
+            }
+            Console.ReadLine();
         }
 
-        private List<UserInfo> GetUserInfo()
+        public static void UserCart(int userID)
         {
-            var results = _db.Customers.Where(c => c.CustomerName == reqBody.Username && c.CustomerPassword == reqBody.Password).ToList();
-            return results;
-        }
-
-        public string UserCart()
-        {
-            var reqBody = JsonSerializer.Deserialize<UserInfo>(json.GetRawText());
-
-            List<UserInfo> credentials = GetUserInfo(reqBody.CustomerID);
-
-            return JsonSerializer.Serialize(credentials);
-        }
-
-        private List<UserInfo> GetUserCart(int customers)
-        {
-            var results = _db.Customers.Where(c => c.CustomerName == reqBody.Username && c.CustomerPassword == reqBody.Password).ToList();
-            return results;
+            using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+            {
+                client.BaseAddress = new Uri("https://capstoneoutfitters.azurewebsites.net/");
+                HttpResponseMessage response = client.GetAsync("Cart/id?id=" + userID).Result;
+                response.EnsureSuccessStatusCode();
+                string result = response.Content.ReadAsStringAsync().Result;
+                CartResponse request = JsonSerializer.Deserialize<CartResponse>(result);
+                foreach (var item in request.CartItems)
+                {
+                    Console.WriteLine(item.Quantity + " " + item.Product.Title + " " + item.Size + " $" + (item.Product.Price * item.Quantity));
+                }
+            }
+            Console.ReadLine();
         }
     }
 
-    class UserInfo
+    public class Customer
     {
         public int CustomerID { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerPassword { get; set; }
+        public string? CustomerName { get; set; }
+        public string? CustomerPassword { get; set; }
+        public string? CustomerAddress { get; set; }
+        public string? Email { get; set; }
     }
 
-    class CartInfo
+    public class CustomerList
     {
-        public int CustomerID { get; set; }
-        public string CartItemID { get; set; }
-        public string ProductID { get; set; }
-        public string Size { get; set; }
-        public int Quantity { get; set; }
-        public string Status { get; set; }
+        public List<Customer> Customers { get; set; }
     }
 
+    public class ProductResponse
+    {
+        public bool Status { get; set; }
+        public int? Price { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public string? Image { get; set; }
+    }
+
+    public class CartItemResponse
+    {
+        public int CartItemID { get; set; }
+        public int? CustomerID { get; set; }
+        public int? ProductID { get; set; }
+        public string? Size { get; set; }
+        public int? Quantity { get; set; }
+        public string? Status { get; set; }
+        public ProductResponse? Product { get; set; }
+    }
+
+    public class CartResponse
+    {
+        public List<CartItemResponse>? CartItems { get; set; }
+    }
 }
